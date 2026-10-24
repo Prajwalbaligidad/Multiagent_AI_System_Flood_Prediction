@@ -1,0 +1,4 @@
+Station,observations,valid_levels,missing_levels,maximum_level,high_level_candidates,extreme_level_candidates,large_change_candidates,isolated_spike_candidates,duplicate_timestamp_rows
+NH15 Crossing Dhansirighat,15329,15325,4,80.605,0,0,2,0,0
+NH15 Crossing Fakirpara Tangni,25831,24789,1042,63.468,0,0,4,0,0
+NH17 Crossing Boko,20696,20551,145,927.97,5,4,18,2,0

@@ -1,0 +1,4 @@
+Station,first_seen,last_seen,records,valid_values,mean_value,max_value,coverage_pct,longest_gap_h,valid_pct
+NH15 Crossing Fakirpara Tangni,2022-01-01 20:00:00,2025-09-17 05:00:00,25831,24337,17.57739,871.863,79.5,1348.0,94.2
+NH17 Crossing Boko,2022-02-25 18:00:00,2025-05-07 09:30:00,20696,20464,18.221205,927.97,73.9,2212.0,98.9
+NH15 Crossing Dhansirighat,2022-02-26 17:00:00,2025-06-28 03:00:00,15329,15328,15.237182,80.605,52.5,4205.0,100.0

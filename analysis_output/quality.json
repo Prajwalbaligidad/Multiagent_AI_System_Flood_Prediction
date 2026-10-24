@@ -1,0 +1,24 @@
+{
+  "river": {
+    "rows_raw": 78212,
+    "value_column": "River Water Level Telemetry Hourly (meter)",
+    "bad_dates": 0,
+    "missing_or_non_numeric": 1844,
+    "sentinel_values": 0,
+    "duplicate_station_time": 16356,
+    "spikes_robust_z_gt_8": 7038,
+    "rows_clean": 61856
+  },
+  "rainfall": {
+    "rows_raw": 74560,
+    "value_column": "Telemetry Hourly Rainfall (mm)",
+    "bad_dates": 0,
+    "missing_or_non_numeric": 0,
+    "sentinel_values": 0,
+    "negative_rainfall": 9,
+    "rainfall_over_250mm_hr": 7878,
+    "duplicate_station_time": 7458,
+    "spikes_robust_z_gt_8": 7374,
+    "rows_clean": 67102
+  }
+}

@@ -1,0 +1,3 @@
+river_station,rain_station,distance_km,overlap_hours,corr_lag0,best_lag_h,best_corr
+NH15 Crossing Fakirpara Tangni,NH15 Crossing Fakirpara Tangni,0.0,1381,0.124,0,0.124
+NH17 Crossing Boko,NH17 Crossing Boko,0.0,983,0.025,36,0.032

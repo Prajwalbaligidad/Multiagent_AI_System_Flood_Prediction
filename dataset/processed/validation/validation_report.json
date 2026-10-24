@@ -1,0 +1,116 @@
+{
+    "generated_at_utc": "2026-10-22T18:39:58.794165+00:00",
+    "project": "Autonomous Multi-Agent AI System for Disaster Prediction and Emergency Response",
+    "validation_scope": "Validation only. Cleaned input CSV files are not modified.",
+    "thresholds": {
+        "rainfall_review_mm": 250.0,
+        "rainfall_extreme_mm": 10000.0,
+        "river_review_m": 50.0,
+        "max_neighbor_gap_hours": 3.0,
+        "river_jump_review_m": 50.0,
+        "local_window_rows": 7,
+        "minimum_local_observations": 5,
+        "mad_multiplier": 8.0
+    },
+    "datasets": {
+        "rainfall": {
+            "file": "rainfall_cleaned.csv",
+            "structure": {
+                "dataset": "rainfall",
+                "rows": 67102,
+                "columns": 25,
+                "station_count": 49,
+                "missing_station_rows": 0,
+                "invalid_timestamp_rows": 0,
+                "missing_measurement_rows": 4494,
+                "missing_measurement_percent": 6.697,
+                "exact_duplicate_rows": 0,
+                "rows_with_duplicate_station_timestamp_keys": 0,
+                "measurement_statistics": {
+                    "minimum": 0.1,
+                    "maximum": 996.0,
+                    "mean": 69.3010781369793,
+                    "median": 14.5,
+                    "standard_deviation": 102.62187343479152,
+                    "p95": 330.0,
+                    "p99": 363.0
+                }
+            },
+            "measurement_checks": {
+                "negative_measurements": 0,
+                "above_review_threshold": 7575,
+                "above_extreme_threshold": 0,
+                "review_threshold_mm": 250.0,
+                "extreme_threshold_mm": 10000.0,
+                "review_records": 7575
+            },
+            "time_gaps": {
+                "station_count": 49,
+                "gap_count": 67053,
+                "intervals_exactly_one_hour": 26119,
+                "intervals_over_one_hour": 23014,
+                "intervals_over_24_hours": 5083,
+                "median_gap_hours": 1.0,
+                "maximum_gap_hours": 19729.0,
+                "one_hour_interval_percent": 38.953
+            },
+            "conflicting_station_timestamp_keys": 0,
+            "stations_in_report": 49,
+            "structural_validation_passed": true
+        },
+        "river": {
+            "file": "river_cleaned.csv",
+            "structure": {
+                "dataset": "river",
+                "rows": 61856,
+                "columns": 26,
+                "station_count": 3,
+                "missing_station_rows": 0,
+                "invalid_timestamp_rows": 0,
+                "missing_measurement_rows": 1191,
+                "missing_measurement_percent": 1.925,
+                "exact_duplicate_rows": 0,
+                "rows_with_duplicate_station_timestamp_keys": 0,
+                "measurement_statistics": {
+                    "minimum": 0.001,
+                    "maximum": 927.97,
+                    "mean": 16.85221013764114,
+                    "median": 5.763,
+                    "standard_deviation": 23.745773947701355,
+                    "p95": 78.285,
+                    "p99": 80.265
+                }
+            },
+            "measurement_checks": {
+                "negative_measurements": 0,
+                "above_review_threshold": 7675,
+                "sudden_change_flags": 9,
+                "local_statistical_anomaly_flags": 5325,
+                "review_threshold_m": 50.0,
+                "review_records": 12431
+            },
+            "time_gaps": {
+                "station_count": 3,
+                "gap_count": 61853,
+                "intervals_exactly_one_hour": 57739,
+                "intervals_over_one_hour": 2139,
+                "intervals_over_24_hours": 56,
+                "median_gap_hours": 1.0,
+                "maximum_gap_hours": 4205.0,
+                "one_hour_interval_percent": 93.349
+            },
+            "conflicting_station_timestamp_keys": 0,
+            "stations_in_report": 3,
+            "structural_validation_passed": true
+        }
+    },
+    "overall_status": "VALIDATION_COMPLETED_REVIEW_FINDINGS",
+    "important_notes": [
+        "Original source files are not modified.",
+        "Review thresholds are not universal physical limits.",
+        "Statistical anomaly flags do not prove data is incorrect.",
+        "Missing rainfall measurements must not be replaced with zero automatically.",
+        "Conflicting measurements require investigation.",
+        "Model readiness requires separate domain and target-label validation."
+    ]
+}

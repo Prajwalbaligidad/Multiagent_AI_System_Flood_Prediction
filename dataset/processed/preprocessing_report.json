@@ -1,0 +1,125 @@
+{
+  "execution_timestamp": "2026-10-23T13:20:43.359792",
+  "status": "SUCCESS",
+  "datasets_loaded": {
+    "weather": {
+      "filepath": "C:\\Users\\prajw\\Downloads\\design_project\\dataset\\raw\\weather_stations.csv",
+      "rows": 3600,
+      "columns": [
+        "station_id",
+        "station_name",
+        "timestamp",
+        "latitude",
+        "longitude",
+        "temperature_c",
+        "relative_humidity_pct",
+        "atmospheric_pressure_hpa",
+        "wind_speed_kmh",
+        "wind_gusts_kmh",
+        "wind_direction_deg",
+        "cloud_cover_pct",
+        "solar_radiation_wm2"
+      ]
+    },
+    "rainfall": {
+      "filepath": "C:\\Users\\prajw\\Downloads\\design_project\\dataset\\raw\\rainfall_sensors.csv",
+      "rows": 3600,
+      "columns": [
+        "station_id",
+        "station_name",
+        "timestamp",
+        "latitude",
+        "longitude",
+        "hourly_rainfall_mm",
+        "cumulative_6h_rainfall_mm",
+        "cumulative_24h_rainfall_mm",
+        "rainfall_intensity_category"
+      ]
+    },
+    "river": {
+      "filepath": "C:\\Users\\prajw\\Downloads\\design_project\\dataset\\raw\\river_discharge_sensors.csv",
+      "rows": 3600,
+      "columns": [
+        "station_id",
+        "station_name",
+        "timestamp",
+        "latitude",
+        "longitude",
+        "river_name",
+        "water_level_m",
+        "warning_level_m",
+        "danger_level_m",
+        "highest_flood_level_m",
+        "discharge_rate_cumecs",
+        "flow_velocity_ms",
+        "waterlogging_depth_cm",
+        "drainage_choke_ratio"
+      ]
+    },
+    "satellite": {
+      "filepath": "C:\\Users\\prajw\\Downloads\\design_project\\dataset\\raw\\satellite_imagery.csv",
+      "rows": 3600,
+      "columns": [
+        "station_id",
+        "station_name",
+        "timestamp",
+        "latitude",
+        "longitude",
+        "cloud_cover_pct",
+        "optical_visibility_flag",
+        "ndwi_index",
+        "surface_water_extent_km2",
+        "water_extent_change_pct",
+        "sar_backscatter_db",
+        "satellite_flood_confidence_pct"
+      ]
+    },
+    "terrain": {
+      "filepath": "C:\\Users\\prajw\\Downloads\\design_project\\dataset\\raw\\terrain_parameters.csv",
+      "rows": 5,
+      "columns": [
+        "station_id",
+        "station_name",
+        "district",
+        "latitude",
+        "longitude",
+        "elevation_m",
+        "slope_deg",
+        "soil_type",
+        "infiltration_capacity_mmh",
+        "land_cover_class",
+        "runoff_coefficient",
+        "drainage_density_km_km2",
+        "topographic_wetness_index"
+      ]
+    },
+    "historical": {
+      "filepath": "C:\\Users\\prajw\\Downloads\\design_project\\dataset\\raw\\historical_flood_events.csv",
+      "rows": 13,
+      "columns": [
+        "event_id",
+        "station_id",
+        "year",
+        "peak_water_level_m",
+        "severity",
+        "return_period_yrs",
+        "flood_duration_days",
+        "affected_population_k",
+        "breach_reported"
+      ]
+    }
+  },
+  "cleaning_summary": {
+    "weather_cleaned_rows": 3600,
+    "rainfall_cleaned_rows": 3600,
+    "river_cleaned_rows": 3600,
+    "satellite_cleaned_rows": 3600,
+    "terrain_stations": 5,
+    "historical_events": 13
+  },
+  "validation_results": {
+    "gauge_levels_consistent": true,
+    "terrain_attributes_positive": true
+  },
+  "aligned_records_count": 3600
+}

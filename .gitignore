@@ -1,0 +1,18 @@
+
+# Protect API keys and environment variables
+.env
+.env.*
+
+# Allow an example environment file without secrets
+!.env.example
+
+# Python cache files
+__pycache__/
+*.pyc
+
+# Virtual environment
+venv/
+.venv/
+
+# Temporary editor files
+.vscode/

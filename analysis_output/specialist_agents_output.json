@@ -1,0 +1,560 @@
+[
+  {
+    "fusion_metadata": {
+      "generated_at": "2026-10-24T07:57:46.675792",
+      "station_id": "STN_001_GUW",
+      "station_name": "Guwahati_AWRMI",
+      "timestamp": "2024-06-15 00:00:00",
+      "inter_agent_messages_exchanged": 0,
+      "ready_for_risk_assessment_agent": true
+    },
+    "autonomous_agent_packets": {
+      "weather": {
+        "agent_id": "AUTONOMOUS_WEATHER_AI_AGENT",
+        "agent_type": "WEATHER",
+        "station_id": "STN_001_GUW",
+        "station_name": "Guwahati_AWRMI",
+        "timestamp": "2024-06-15 00:00:00",
+        "agent_goal": "EARLY_DETECTION_OF_CONVECTIVE_STORMS_AND_CLOUDBURSTS",
+        "operational_state": "ROUTINE_MONITORING",
+        "risk_score": 0.05,
+        "risk_level": "LOW",
+        "confidence": 0.94,
+        "critical_flags": [],
+        "action_trigger": "STANDARD_METEOROLOGICAL_MONITORING",
+        "active_intentions": [
+          "INTENTION_LOG_BASELINE_ATMOSPHERIC_METRICS"
+        ],
+        "dispatched_messages_count": 0,
+        "key_indicators": {
+          "hourly_rainfall_mm": 0.0,
+          "cumulative_6h_rainfall_mm": 0.0,
+          "cumulative_24h_rainfall_mm": 0.0,
+          "rainfall_intensity_category": "No Rain",
+          "wind_speed_kmh": 13.7,
+          "wind_gusts_kmh": 21.3,
+          "atmospheric_pressure_hpa": 1008.4,
+          "pressure_drop_3h_hpa": 0.0,
+          "relative_humidity_pct": 66.4
+        },
+        "ready_for_fusion": true
+      },
+      "flood": {
+        "agent_id": "AUTONOMOUS_FLOOD_AI_AGENT",
+        "agent_type": "FLOOD",
+        "station_id": "STN_001_GUW",
+        "station_name": "Guwahati_AWRMI",
+        "timestamp": "2024-06-15 00:00:00",
+        "agent_goal": "PREVENT_LEVEE_OVERTOPPING_AND_MITIGATE_DRAINAGE_COLLAPSE",
+        "operational_state": "ROUTINE_MONITORING",
+        "risk_score": 0.05,
+        "risk_level": "LOW",
+        "confidence": 0.95,
+        "critical_flags": [],
+        "action_trigger": "STANDARD_HYDROLOGICAL_MONITORING",
+        "active_intentions": [
+          "INTENTION_LOG_BASELINE_HYDROGRAPH"
+        ],
+        "dispatched_messages_count": 0,
+        "key_indicators": {
+          "river_name": "Brahmaputra",
+          "water_level_m": 46.18,
+          "warning_level_m": 49.68,
+          "danger_level_m": 50.5,
+          "danger_buffer_m": -4.32,
+          "water_level_rise_3h_m": 0.0,
+          "discharge_rate_cumecs": 2118.3,
+          "flow_velocity_ms": 0.66,
+          "waterlogging_depth_cm": 0.0,
+          "drainage_choke_ratio": 0.22
+        },
+        "ready_for_fusion": true
+      },
+      "terrain": {
+        "agent_id": "AUTONOMOUS_TERRAIN_AI_AGENT",
+        "agent_type": "TERRAIN",
+        "station_id": "STN_001_GUW",
+        "station_name": "Guwahati_AWRMI",
+        "timestamp": "2024-06-15 00:00:00",
+        "agent_goal": "IDENTIFY_GEOMORPHIC_RUNOFF_ACCUMULATION_CORRIDORS",
+        "operational_state": "ROUTINE_MONITORING",
+        "risk_score": 0.05,
+        "risk_level": "LOW",
+        "confidence": 0.92,
+        "critical_flags": [
+          "HIGH_RUNOFF_IMPERVIOUS_SURFACE"
+        ],
+        "action_trigger": "STABLE_TERRAIN_DRAINAGE",
+        "active_intentions": [
+          "INTENTION_VERIFY_NATURAL_INFILTRATION"
+        ],
+        "dispatched_messages_count": 0,
+        "key_indicators": {
+          "slope_deg": 2.5,
+          "elevation_m": 55.0,
+          "soil_type": "Silty Clay Loam",
+          "infiltration_capacity_mmh": 8.5,
+          "land_cover_class": "Urban / Built-up",
+          "runoff_coefficient": 0.78,
+          "topographic_wetness_index": 12.25,
+          "effective_runoff_surge_index": 0.0
+        },
+        "ready_for_fusion": true
+      },
+      "satellite": {
+        "agent_id": "AUTONOMOUS_SATELLITE_AI_AGENT",
+        "agent_type": "SATELLITE",
+        "station_id": "STN_001_GUW",
+        "station_name": "Guwahati_AWRMI",
+        "timestamp": "2024-06-15 00:00:00",
+        "agent_goal": "MAINTAIN_GROUND_TRUTH_OBSERVABILITY_DESPITE_ATMOSPHERIC_OCCLUSION",
+        "operational_state": "ROUTINE_MONITORING",
+        "risk_score": 0.05,
+        "risk_level": "LOW",
+        "confidence": 0.85,
+        "critical_flags": [],
+        "action_trigger": "CONFIRM_NORMAL_SEASONAL_WATER_CHANNELS",
+        "active_intentions": [
+          "INTENTION_UPDATE_BASELINE_SURFACE_WATER_MASK"
+        ],
+        "dispatched_messages_count": 0,
+        "key_indicators": {
+          "sensor_mode": "OPTICAL_SAR_FUSION",
+          "cloud_cover_pct": 23.8,
+          "optical_visibility_flag": true,
+          "ndwi_index": 0.033,
+          "surface_water_extent_km2": 25.0,
+          "water_extent_change_pct": 0.0,
+          "sar_backscatter_db": -12.5,
+          "satellite_flood_confidence_pct": 20.0
+        },
+        "ready_for_fusion": true
+      }
+    }
+  },
+  {
+    "fusion_metadata": {
+      "generated_at": "2026-10-24T07:57:47.118526",
+      "station_id": "STN_001_GUW",
+      "station_name": "Guwahati_AWRMI",
+      "timestamp": "2024-06-25 01:00:00",
+      "inter_agent_messages_exchanged": 0,
+      "ready_for_risk_assessment_agent": true
+    },
+    "autonomous_agent_packets": {
+      "weather": {
+        "agent_id": "AUTONOMOUS_WEATHER_AI_AGENT",
+        "agent_type": "WEATHER",
+        "station_id": "STN_001_GUW",
+        "station_name": "Guwahati_AWRMI",
+        "timestamp": "2024-06-25 01:00:00",
+        "agent_goal": "EARLY_DETECTION_OF_CONVECTIVE_STORMS_AND_CLOUDBURSTS",
+        "operational_state": "ELEVATED_AWARENESS",
+        "risk_score": 0.312,
+        "risk_level": "MODERATE",
+        "confidence": 0.94,
+        "critical_flags": [],
+        "action_trigger": "MAINTAIN_YELLOW_WEATHER_WATCH",
+        "active_intentions": [
+          "INTENTION_MONITOR_BAROMETRIC_PRESSURE_TREND"
+        ],
+        "dispatched_messages_count": 0,
+        "key_indicators": {
+          "hourly_rainfall_mm": 3.55,
+          "cumulative_6h_rainfall_mm": 8.17,
+          "cumulative_24h_rainfall_mm": 18.97,
+          "rainfall_intensity_category": "Moderate Rain",
+          "wind_speed_kmh": 19.3,
+          "wind_gusts_kmh": 30.2,
+          "atmospheric_pressure_hpa": 1007.7,
+          "pressure_drop_3h_hpa": -0.6,
+          "relative_humidity_pct": 76.0
+        },
+        "ready_for_fusion": true
+      },
+      "flood": {
+        "agent_id": "AUTONOMOUS_FLOOD_AI_AGENT",
+        "agent_type": "FLOOD",
+        "station_id": "STN_001_GUW",
+        "station_name": "Guwahati_AWRMI",
+        "timestamp": "2024-06-25 01:00:00",
+        "agent_goal": "PREVENT_LEVEE_OVERTOPPING_AND_MITIGATE_DRAINAGE_COLLAPSE",
+        "operational_state": "ELEVATED_AWARENESS",
+        "risk_score": 0.231,
+        "risk_level": "MODERATE",
+        "confidence": 0.95,
+        "critical_flags": [],
+        "action_trigger": "INTENSIFY_GAUGE_AND_SLUICE_MONITORING",
+        "active_intentions": [
+          "INTENTION_INCREASE_SAMPLING_FREQUENCY"
+        ],
+        "dispatched_messages_count": 0,
+        "key_indicators": {
+          "river_name": "Brahmaputra",
+          "water_level_m": 46.25,
+          "warning_level_m": 49.68,
+          "danger_level_m": 50.5,
+          "danger_buffer_m": -4.25,
+          "water_level_rise_3h_m": 0.005,
+          "discharge_rate_cumecs": 2299.6,
+          "flow_velocity_ms": 0.67,
+          "waterlogging_depth_cm": 0.0,
+          "drainage_choke_ratio": 0.26
+        },
+        "ready_for_fusion": true
+      },
+      "terrain": {
+        "agent_id": "AUTONOMOUS_TERRAIN_AI_AGENT",
+        "agent_type": "TERRAIN",
+        "station_id": "STN_001_GUW",
+        "station_name": "Guwahati_AWRMI",
+        "timestamp": "2024-06-25 01:00:00",
+        "agent_goal": "IDENTIFY_GEOMORPHIC_RUNOFF_ACCUMULATION_CORRIDORS",
+        "operational_state": "ELEVATED_AWARENESS",
+        "risk_score": 0.336,
+        "risk_level": "MODERATE",
+        "confidence": 0.92,
+        "critical_flags": [
+          "HIGH_RUNOFF_IMPERVIOUS_SURFACE"
+        ],
+        "action_trigger": "MONITOR_LOW_LYING_DEPRESSION_PONDING",
+        "active_intentions": [
+          "INTENTION_INSPECT_TOPOGRAPHIC_WETNESS_ZONES"
+        ],
+        "dispatched_messages_count": 0,
+        "key_indicators": {
+          "slope_deg": 2.5,
+          "elevation_m": 55.0,
+          "soil_type": "Silty Clay Loam",
+          "infiltration_capacity_mmh": 8.5,
+          "land_cover_class": "Urban / Built-up",
+          "runoff_coefficient": 0.78,
+          "topographic_wetness_index": 12.25,
+          "effective_runoff_surge_index": 0.326
+        },
+        "ready_for_fusion": true
+      },
+      "satellite": {
+        "agent_id": "AUTONOMOUS_SATELLITE_AI_AGENT",
+        "agent_type": "SATELLITE",
+        "station_id": "STN_001_GUW",
+        "station_name": "Guwahati_AWRMI",
+        "timestamp": "2024-06-25 01:00:00",
+        "agent_goal": "MAINTAIN_GROUND_TRUTH_OBSERVABILITY_DESPITE_ATMOSPHERIC_OCCLUSION",
+        "operational_state": "ELEVATED_AWARENESS",
+        "risk_score": 0.329,
+        "risk_level": "MODERATE",
+        "confidence": 0.85,
+        "critical_flags": [],
+        "action_trigger": "TASK_HIGH_FREQUENCY_SATELLITE_CONSTELLATION",
+        "active_intentions": [
+          "INTENTION_REQUEST_COMMERCIAL_SAR_TASKING"
+        ],
+        "dispatched_messages_count": 0,
+        "key_indicators": {
+          "sensor_mode": "OPTICAL_SAR_FUSION",
+          "cloud_cover_pct": 41.3,
+          "optical_visibility_flag": true,
+          "ndwi_index": 0.039,
+          "surface_water_extent_km2": 28.79,
+          "water_extent_change_pct": 15.2,
+          "sar_backscatter_db": -14.32,
+          "satellite_flood_confidence_pct": 29.9
+        },
+        "ready_for_fusion": true
+      }
+    }
+  },
+  {
+    "fusion_metadata": {
+      "generated_at": "2026-10-24T07:57:47.466688",
+      "station_id": "STN_001_GUW",
+      "station_name": "Guwahati_AWRMI",
+      "timestamp": "2024-06-26 00:00:00",
+      "inter_agent_messages_exchanged": 1,
+      "ready_for_risk_assessment_agent": true
+    },
+    "autonomous_agent_packets": {
+      "weather": {
+        "agent_id": "AUTONOMOUS_WEATHER_AI_AGENT",
+        "agent_type": "WEATHER",
+        "station_id": "STN_001_GUW",
+        "station_name": "Guwahati_AWRMI",
+        "timestamp": "2024-06-26 00:00:00",
+        "agent_goal": "EARLY_DETECTION_OF_CONVECTIVE_STORMS_AND_CLOUDBURSTS",
+        "operational_state": "ACTIVE_WATCH",
+        "risk_score": 0.646,
+        "risk_level": "HIGH",
+        "confidence": 0.94,
+        "critical_flags": [],
+        "action_trigger": "ISSUE_ORANGE_PRECIPITATION_ADVISORY",
+        "active_intentions": [
+          "INTENTION_INTENSIFY_RADAR_AND_STORM_TRACKING"
+        ],
+        "dispatched_messages_count": 0,
+        "key_indicators": {
+          "hourly_rainfall_mm": 6.0,
+          "cumulative_6h_rainfall_mm": 20.53,
+          "cumulative_24h_rainfall_mm": 78.71,
+          "rainfall_intensity_category": "Moderate Rain",
+          "wind_speed_kmh": 21.8,
+          "wind_gusts_kmh": 35.1,
+          "atmospheric_pressure_hpa": 1006.9,
+          "pressure_drop_3h_hpa": 0.3,
+          "relative_humidity_pct": 78.8
+        },
+        "ready_for_fusion": true
+      },
+      "flood": {
+        "agent_id": "AUTONOMOUS_FLOOD_AI_AGENT",
+        "agent_type": "FLOOD",
+        "station_id": "STN_001_GUW",
+        "station_name": "Guwahati_AWRMI",
+        "timestamp": "2024-06-26 00:00:00",
+        "agent_goal": "PREVENT_LEVEE_OVERTOPPING_AND_MITIGATE_DRAINAGE_COLLAPSE",
+        "operational_state": "ACTIVE_WATCH",
+        "risk_score": 0.577,
+        "risk_level": "HIGH",
+        "confidence": 0.95,
+        "critical_flags": [],
+        "action_trigger": "DEPLOY_FLOODPLAIN_BARRIERS_AND_PUMPS",
+        "active_intentions": [
+          "INTENTION_CLOSE_RIVER_SLUICE_GATES"
+        ],
+        "dispatched_messages_count": 0,
+        "key_indicators": {
+          "river_name": "Brahmaputra",
+          "water_level_m": 46.534,
+          "warning_level_m": 49.68,
+          "danger_level_m": 50.5,
+          "danger_buffer_m": -3.966,
+          "water_level_rise_3h_m": 0.028,
+          "discharge_rate_cumecs": 3101.9,
+          "flow_velocity_ms": 0.73,
+          "waterlogging_depth_cm": 0.0,
+          "drainage_choke_ratio": 0.44
+        },
+        "ready_for_fusion": true
+      },
+      "terrain": {
+        "agent_id": "AUTONOMOUS_TERRAIN_AI_AGENT",
+        "agent_type": "TERRAIN",
+        "station_id": "STN_001_GUW",
+        "station_name": "Guwahati_AWRMI",
+        "timestamp": "2024-06-26 00:00:00",
+        "agent_goal": "IDENTIFY_GEOMORPHIC_RUNOFF_ACCUMULATION_CORRIDORS",
+        "operational_state": "ACTIVE_WATCH",
+        "risk_score": 0.584,
+        "risk_level": "HIGH",
+        "confidence": 0.92,
+        "critical_flags": [
+          "HIGH_RUNOFF_IMPERVIOUS_SURFACE"
+        ],
+        "action_trigger": "ENFORCE_STORMWATER_CORRIDOR_CLEARANCE",
+        "active_intentions": [
+          "INTENTION_ISSUE_CLEARANCE_ORDER_FOR_LOW_LYING_HOLLOWS",
+          "INTENTION_NOTIFY_FLOOD_AGENT_OF_HIGH_OVERLAND_RUNOFF"
+        ],
+        "dispatched_messages_count": 1,
+        "key_indicators": {
+          "slope_deg": 2.5,
+          "elevation_m": 55.0,
+          "soil_type": "Silty Clay Loam",
+          "infiltration_capacity_mmh": 8.5,
+          "land_cover_class": "Urban / Built-up",
+          "runoff_coefficient": 0.78,
+          "topographic_wetness_index": 12.25,
+          "effective_runoff_surge_index": 0.551
+        },
+        "ready_for_fusion": true
+      },
+      "satellite": {
+        "agent_id": "AUTONOMOUS_SATELLITE_AI_AGENT",
+        "agent_type": "SATELLITE",
+        "station_id": "STN_001_GUW",
+        "station_name": "Guwahati_AWRMI",
+        "timestamp": "2024-06-26 00:00:00",
+        "agent_goal": "MAINTAIN_GROUND_TRUTH_OBSERVABILITY_DESPITE_ATMOSPHERIC_OCCLUSION",
+        "operational_state": "ACTIVE_WATCH",
+        "risk_score": 0.653,
+        "risk_level": "HIGH",
+        "confidence": 0.85,
+        "critical_flags": [
+          "SIGNIFICANT_FLOOD_SPREAD",
+          "ELEVATED_SURFACE_MOISTURE_SIGNATURE",
+          "SAR_SPECULAR_FLOOD_SIGNATURE"
+        ],
+        "action_trigger": "ALERT_EMERGENCY_UNITS_TO_INUNDATED_ACCESS_ROADS",
+        "active_intentions": [
+          "INTENTION_SCHEDULE_NEXT_ORBITAL_PASS"
+        ],
+        "dispatched_messages_count": 0,
+        "key_indicators": {
+          "sensor_mode": "OPTICAL_SAR_FUSION",
+          "cloud_cover_pct": 43.7,
+          "optical_visibility_flag": true,
+          "ndwi_index": 0.236,
+          "surface_water_extent_km2": 40.74,
+          "water_extent_change_pct": 63.0,
+          "sar_backscatter_db": -20.06,
+          "satellite_flood_confidence_pct": 61.0
+        },
+        "ready_for_fusion": true
+      }
+    }
+  },
+  {
+    "fusion_metadata": {
+      "generated_at": "2026-10-24T07:57:48.250691",
+      "station_id": "STN_001_GUW",
+      "station_name": "Guwahati_AWRMI",
+      "timestamp": "2024-07-03 08:00:00",
+      "inter_agent_messages_exchanged": 4,
+      "ready_for_risk_assessment_agent": true
+    },
+    "autonomous_agent_packets": {
+      "weather": {
+        "agent_id": "AUTONOMOUS_WEATHER_AI_AGENT",
+        "agent_type": "WEATHER",
+        "station_id": "STN_001_GUW",
+        "station_name": "Guwahati_AWRMI",
+        "timestamp": "2024-07-03 08:00:00",
+        "agent_goal": "EARLY_DETECTION_OF_CONVECTIVE_STORMS_AND_CLOUDBURSTS",
+        "operational_state": "EMERGENCY_MOBILIZATION",
+        "risk_score": 0.95,
+        "risk_level": "CRITICAL",
+        "confidence": 0.94,
+        "critical_flags": [
+          "HEAVY_RAINFALL",
+          "EXTREME_24H_ACCUMULATION",
+          "SURGE_6H_PRECIPITATION",
+          "HIGH_WIND_SQUALL"
+        ],
+        "action_trigger": "TRIGGER_RED_DELUGE_ALERT",
+        "active_intentions": [
+          "INTENTION_ISSUE_METEOROLOGICAL_RED_ALERT",
+          "INTENTION_WARN_DOWNSTREAM_FLOOD_AGENT_OF_INCOMING_SURGE"
+        ],
+        "dispatched_messages_count": 1,
+        "key_indicators": {
+          "hourly_rainfall_mm": 22.12,
+          "cumulative_6h_rainfall_mm": 239.91,
+          "cumulative_24h_rainfall_mm": 1453.11,
+          "rainfall_intensity_category": "Heavy Rain",
+          "wind_speed_kmh": 70.2,
+          "wind_gusts_kmh": 101.6,
+          "atmospheric_pressure_hpa": 992.5,
+          "pressure_drop_3h_hpa": 0.2,
+          "relative_humidity_pct": 99.5
+        },
+        "ready_for_fusion": true
+      },
+      "flood": {
+        "agent_id": "AUTONOMOUS_FLOOD_AI_AGENT",
+        "agent_type": "FLOOD",
+        "station_id": "STN_001_GUW",
+        "station_name": "Guwahati_AWRMI",
+        "timestamp": "2024-07-03 08:00:00",
+        "agent_goal": "PREVENT_LEVEE_OVERTOPPING_AND_MITIGATE_DRAINAGE_COLLAPSE",
+        "operational_state": "EMERGENCY_MOBILIZATION",
+        "risk_score": 0.95,
+        "risk_level": "CRITICAL",
+        "confidence": 0.95,
+        "critical_flags": [
+          "RIVER_BREACHED_DANGER_LEVEL",
+          "SEVERE_URBAN_WATERLOGGING",
+          "DRAINAGE_NETWORK_COLLAPSE",
+          "UPSTREAM_METEOROLOGICAL_SURGE_INCOMING"
+        ],
+        "action_trigger": "TRIGGER_EMERGENCY_EVACUATION_BRAHMAPUTRA_BASIN",
+        "active_intentions": [
+          "INTENTION_SOUND_RIVERBANK_BREACH_SIRENS_BRAHMAPUTRA",
+          "INTENTION_MOBILIZE_HIGH_CAPACITY_DEWATERING_PUMPS",
+          "INTENTION_ALERT_COORDINATOR_FOR_NDRF_DEPLOYMENT"
+        ],
+        "dispatched_messages_count": 1,
+        "key_indicators": {
+          "river_name": "Brahmaputra",
+          "water_level_m": 52.076,
+          "warning_level_m": 49.68,
+          "danger_level_m": 50.5,
+          "danger_buffer_m": 1.576,
+          "water_level_rise_3h_m": -0.006,
+          "discharge_rate_cumecs": 37430.0,
+          "flow_velocity_ms": 1.46,
+          "waterlogging_depth_cm": 118.2,
+          "drainage_choke_ratio": 1.0
+        },
+        "ready_for_fusion": true
+      },
+      "terrain": {
+        "agent_id": "AUTONOMOUS_TERRAIN_AI_AGENT",
+        "agent_type": "TERRAIN",
+        "station_id": "STN_001_GUW",
+        "station_name": "Guwahati_AWRMI",
+        "timestamp": "2024-07-03 08:00:00",
+        "agent_goal": "IDENTIFY_GEOMORPHIC_RUNOFF_ACCUMULATION_CORRIDORS",
+        "operational_state": "EMERGENCY_MOBILIZATION",
+        "risk_score": 0.95,
+        "risk_level": "CRITICAL",
+        "confidence": 0.92,
+        "critical_flags": [
+          "HIGH_RUNOFF_IMPERVIOUS_SURFACE",
+          "SOIL_SATURATION_EXCESS_RUNOFF"
+        ],
+        "action_trigger": "ENFORCE_STORMWATER_CORRIDOR_CLEARANCE",
+        "active_intentions": [
+          "INTENTION_ISSUE_CLEARANCE_ORDER_FOR_LOW_LYING_HOLLOWS",
+          "INTENTION_NOTIFY_FLOOD_AGENT_OF_HIGH_OVERLAND_RUNOFF"
+        ],
+        "dispatched_messages_count": 1,
+        "key_indicators": {
+          "slope_deg": 2.5,
+          "elevation_m": 55.0,
+          "soil_type": "Silty Clay Loam",
+          "infiltration_capacity_mmh": 8.5,
+          "land_cover_class": "Urban / Built-up",
+          "runoff_coefficient": 0.78,
+          "topographic_wetness_index": 12.25,
+          "effective_runoff_surge_index": 2.03
+        },
+        "ready_for_fusion": true
+      },
+      "satellite": {
+        "agent_id": "AUTONOMOUS_SATELLITE_AI_AGENT",
+        "agent_type": "SATELLITE",
+        "station_id": "STN_001_GUW",
+        "station_name": "Guwahati_AWRMI",
+        "timestamp": "2024-07-03 08:00:00",
+        "agent_goal": "MAINTAIN_GROUND_TRUTH_OBSERVABILITY_DESPITE_ATMOSPHERIC_OCCLUSION",
+        "operational_state": "EMERGENCY_MOBILIZATION",
+        "risk_score": 0.95,
+        "risk_level": "CRITICAL",
+        "confidence": 0.98,
+        "critical_flags": [
+          "OPTICAL_SENSOR_CLOUD_OCCLUDED",
+          "EXTREME_SURFACE_WATER_EXPANSION",
+          "HIGH_NDWI_OPEN_STANDING_WATER",
+          "SAR_SPECULAR_FLOOD_SIGNATURE"
+        ],
+        "action_trigger": "DISPATCH_SAR_FLOODPLAIN_INUNDATION_VECTORS",
+        "active_intentions": [
+          "INTENTION_EXPORT_VECTOR_FLOOD_POLYGONS",
+          "INTENTION_BROADCAST_RADAR_CONFIRMATION_TO_ALL_AGENTS"
+        ],
+        "dispatched_messages_count": 1,
+        "key_indicators": {
+          "sensor_mode": "SAR_RADAR_PRIMARY",
+          "cloud_cover_pct": 100.0,
+          "optical_visibility_flag": false,
+          "ndwi_index": 0.85,
+          "surface_water_extent_km2": 402.3,
+          "water_extent_change_pct": 1509.2,
+          "sar_backscatter_db": -27.5,
+          "satellite_flood_confidence_pct": 98.0
+        },
+        "ready_for_fusion": true
+      }
+    }
+  }
+]

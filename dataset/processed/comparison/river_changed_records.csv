@@ -1,0 +1,114 @@
+_source_row,Station_cleaned,Data Acquisition Time_cleaned,River Water Level Telemetry Hourly (meter)_cleaned,Station_original,Data Acquisition Time_original,River Water Level Telemetry Hourly (meter)_original,_merge,source_row_found,station_changed,timestamp_changed,measurement_became_missing,measurement_changed_numerically,original_measurement,cleaned_measurement,measurement_status
+6492,NH15 Crossing Dhansirighat,2023-03-31 06:00:00,,NH15 Crossing Dhansirighat,31-03-2023 06:00,3.172,both,True,False,False,True,False,3.172,,Original value became missing
+6693,NH15 Crossing Dhansirighat,2023-04-05 09:00:00,,NH15 Crossing Dhansirighat,05-04-2023 09:00,2.999,both,True,False,False,True,False,2.999,,Original value became missing
+7567,NH15 Crossing Dhansirighat,2023-04-27 07:00:00,,NH15 Crossing Dhansirighat,27-04-2023 07:00,3.186,both,True,False,False,True,False,3.186,,Original value became missing
+19334,NH15 Crossing Fakirpara Tangni,2022-09-06 21:00:00,,NH15 Crossing Fakirpara Tangni,06-09-2022 21:00,0.652,both,True,False,False,True,False,0.652,,Original value became missing
+19757,NH15 Crossing Fakirpara Tangni,2022-09-17 16:00:00,,NH15 Crossing Fakirpara Tangni,17-09-2022 16:00,0.728,both,True,False,False,True,False,0.728,,Original value became missing
+20401,NH15 Crossing Fakirpara Tangni,2022-10-06 05:00:00,,NH15 Crossing Fakirpara Tangni,06-10-2022 05:00,1.307,both,True,False,False,True,False,1.307,,Original value became missing
+21411,NH15 Crossing Fakirpara Tangni,2022-11-14 12:00:00,,NH15 Crossing Fakirpara Tangni,14-11-2022 12:00,1.254,both,True,False,False,True,False,1.254,,Original value became missing
+23103,NH15 Crossing Fakirpara Tangni,2022-12-29 19:00:00,,NH15 Crossing Fakirpara Tangni,29-12-2022 19:00,1.279,both,True,False,False,True,False,1.279,,Original value became missing
+26142,NH15 Crossing Fakirpara Tangni,2023-05-07 21:00:00,,NH15 Crossing Fakirpara Tangni,07-05-2023 21:00,5.763,both,True,False,False,True,False,5.763,,Original value became missing
+26271,NH15 Crossing Fakirpara Tangni,2023-05-11 04:00:00,,NH15 Crossing Fakirpara Tangni,11-05-2023 04:00,1.01,both,True,False,False,True,False,1.01,,Original value became missing
+26424,NH15 Crossing Fakirpara Tangni,2023-05-15 15:00:00,,NH15 Crossing Fakirpara Tangni,15-05-2023 15:00,1.144,both,True,False,False,True,False,1.144,,Original value became missing
+27840,NH15 Crossing Fakirpara Tangni,2023-07-01 08:00:00,,NH15 Crossing Fakirpara Tangni,01-07-2023 08:00,5.763,both,True,False,False,True,False,5.763,,Original value became missing
+28439,NH15 Crossing Fakirpara Tangni,2023-07-16 21:00:00,,NH15 Crossing Fakirpara Tangni,16-07-2023 21:00,5.763,both,True,False,False,True,False,5.763,,Original value became missing
+28884,NH15 Crossing Fakirpara Tangni,2023-07-28 04:00:00,,NH15 Crossing Fakirpara Tangni,28-07-2023 04:00,1.281,both,True,False,False,True,False,1.281,,Original value became missing
+29214,NH15 Crossing Fakirpara Tangni,2023-08-08 14:00:00,,NH15 Crossing Fakirpara Tangni,08-08-2023 14:00,1.421,both,True,False,False,True,False,1.421,,Original value became missing
+29322,NH15 Crossing Fakirpara Tangni,2023-08-12 18:00:00,,NH15 Crossing Fakirpara Tangni,12-08-2023 18:00,1.348,both,True,False,False,True,False,1.348,,Original value became missing
+29584,NH15 Crossing Fakirpara Tangni,2023-08-22 21:00:00,,NH15 Crossing Fakirpara Tangni,22-08-2023 21:00,1.693,both,True,False,False,True,False,1.693,,Original value became missing
+29634,NH15 Crossing Fakirpara Tangni,2023-08-24 05:00:00,,NH15 Crossing Fakirpara Tangni,24-08-2023 05:00,1.425,both,True,False,False,True,False,1.425,,Original value became missing
+29649,NH15 Crossing Fakirpara Tangni,2023-08-24 15:00:00,,NH15 Crossing Fakirpara Tangni,24-08-2023 15:00,1.444,both,True,False,False,True,False,1.444,,Original value became missing
+29922,NH15 Crossing Fakirpara Tangni,2023-09-06 22:00:00,,NH15 Crossing Fakirpara Tangni,06-09-2023 22:00,1.231,both,True,False,False,True,False,1.231,,Original value became missing
+31016,NH15 Crossing Fakirpara Tangni,2023-10-05 11:00:00,,NH15 Crossing Fakirpara Tangni,05-10-2023 11:00,5.763,both,True,False,False,True,False,5.763,,Original value became missing
+31027,NH15 Crossing Fakirpara Tangni,2023-10-05 17:00:00,,NH15 Crossing Fakirpara Tangni,05-10-2023 17:00,5.763,both,True,False,False,True,False,5.763,,Original value became missing
+33208,NH15 Crossing Fakirpara Tangni,2023-11-30 08:00:00,,NH15 Crossing Fakirpara Tangni,30-11-2023 08:00,5.763,both,True,False,False,True,False,5.763,,Original value became missing
+33803,NH15 Crossing Fakirpara Tangni,2023-12-14 17:00:00,,NH15 Crossing Fakirpara Tangni,14-12-2023 17:00,5.763,both,True,False,False,True,False,5.763,,Original value became missing
+35025,NH15 Crossing Fakirpara Tangni,2024-02-09 11:00:00,,NH15 Crossing Fakirpara Tangni,09-02-2024 11:00,0.966,both,True,False,False,True,False,0.966,,Original value became missing
+35371,NH15 Crossing Fakirpara Tangni,2024-02-16 18:00:00,,NH15 Crossing Fakirpara Tangni,16-02-2024 18:00,0.97,both,True,False,False,True,False,0.97,,Original value became missing
+37782,NH15 Crossing Fakirpara Tangni,2024-04-22 07:00:00,,NH15 Crossing Fakirpara Tangni,22-04-2024 07:00,5.763,both,True,False,False,True,False,5.763,,Original value became missing
+38299,NH15 Crossing Fakirpara Tangni,2024-05-05 14:00:00,,NH15 Crossing Fakirpara Tangni,05-05-2024 14:00,0.952,both,True,False,False,True,False,0.952,,Original value became missing
+38312,NH15 Crossing Fakirpara Tangni,2024-05-05 21:00:00,,NH15 Crossing Fakirpara Tangni,05-05-2024 21:00,0.944,both,True,False,False,True,False,0.944,,Original value became missing
+40427,NH15 Crossing Fakirpara Tangni,2024-07-05 04:00:00,,NH15 Crossing Fakirpara Tangni,05-07-2024 04:00,32.7,both,True,False,False,True,False,32.7,,Original value became missing
+40698,NH15 Crossing Fakirpara Tangni,2024-07-16 12:00:00,,NH15 Crossing Fakirpara Tangni,16-07-2024 12:00,32.7,both,True,False,False,True,False,32.7,,Original value became missing
+40889,NH15 Crossing Fakirpara Tangni,2024-07-24 14:00:00,,NH15 Crossing Fakirpara Tangni,24-07-2024 14:00,458.7,both,True,False,False,True,False,458.7,,Original value became missing
+40990,NH15 Crossing Fakirpara Tangni,2024-07-29 03:00:00,,NH15 Crossing Fakirpara Tangni,29-07-2024 03:00,32.7,both,True,False,False,True,False,32.7,,Original value became missing
+41082,NH15 Crossing Fakirpara Tangni,2024-07-31 11:00:00,,NH15 Crossing Fakirpara Tangni,31-07-2024 11:00,32.7,both,True,False,False,True,False,32.7,,Original value became missing
+41283,NH15 Crossing Fakirpara Tangni,2024-08-06 05:00:00,,NH15 Crossing Fakirpara Tangni,06-08-2024 05:00,32.7,both,True,False,False,True,False,32.7,,Original value became missing
+41306,NH15 Crossing Fakirpara Tangni,2024-08-06 17:00:00,,NH15 Crossing Fakirpara Tangni,06-08-2024 17:00,32.7,both,True,False,False,True,False,32.7,,Original value became missing
+41735,NH15 Crossing Fakirpara Tangni,2024-08-20 05:00:00,,NH15 Crossing Fakirpara Tangni,20-08-2024 05:00,32.7,both,True,False,False,True,False,32.7,,Original value became missing
+42143,NH15 Crossing Fakirpara Tangni,2024-08-31 04:00:00,,NH15 Crossing Fakirpara Tangni,31-08-2024 04:00,32.7,both,True,False,False,True,False,32.7,,Original value became missing
+42199,NH15 Crossing Fakirpara Tangni,2024-09-01 15:00:00,,NH15 Crossing Fakirpara Tangni,01-09-2024 15:00,32.7,both,True,False,False,True,False,32.7,,Original value became missing
+44237,NH15 Crossing Fakirpara Tangni,2024-10-18 05:00:00,,NH15 Crossing Fakirpara Tangni,18-10-2024 05:00,32.7,both,True,False,False,True,False,32.7,,Original value became missing
+54668,NH17 Crossing Boko,2022-08-06 02:00:00,,NH17 Crossing Boko,06-08-2022 02:00,3.27,both,True,False,False,True,False,3.27,,Original value became missing
+55992,NH17 Crossing Boko,2022-09-30 10:00:00,,NH17 Crossing Boko,30-09-2022 10:00,3.051,both,True,False,False,True,False,3.051,,Original value became missing
+56311,NH17 Crossing Boko,2022-10-10 10:00:00,,NH17 Crossing Boko,10-10-2022 10:00,1.998,both,True,False,False,True,False,1.998,,Original value became missing
+56533,NH17 Crossing Boko,2022-10-15 18:00:00,,NH17 Crossing Boko,15-10-2022 18:00,2.021,both,True,False,False,True,False,2.021,,Original value became missing
+57797,NH17 Crossing Boko,2022-11-25 09:00:00,,NH17 Crossing Boko,25-11-2022 09:00,2.295,both,True,False,False,True,False,2.295,,Original value became missing
+57970,NH17 Crossing Boko,2022-12-08 11:00:00,,NH17 Crossing Boko,08-12-2022 11:00,1.666,both,True,False,False,True,False,1.666,,Original value became missing
+58052,NH17 Crossing Boko,2022-12-11 20:00:00,,NH17 Crossing Boko,11-12-2022 20:00,1018.645,both,True,False,False,True,False,1018.645,,Original value became missing
+59869,NH17 Crossing Boko,2023-02-24 15:00:00,,NH17 Crossing Boko,24-02-2023 15:00,2.401,both,True,False,False,True,False,2.401,,Original value became missing
+60674,NH17 Crossing Boko,2023-03-25 13:00:00,,NH17 Crossing Boko,25-03-2023 13:00,2.437,both,True,False,False,True,False,2.437,,Original value became missing
+63187,NH17 Crossing Boko,2023-08-17 04:00:00,,NH17 Crossing Boko,17-08-2023 04:00,6.655,both,True,False,False,True,False,6.655,,Original value became missing
+64026,NH17 Crossing Boko,2023-09-11 13:00:00,,NH17 Crossing Boko,11-09-2023 13:00,6.887,both,True,False,False,True,False,6.887,,Original value became missing
+64134,NH17 Crossing Boko,2023-09-14 06:00:00,,NH17 Crossing Boko,14-09-2023 06:00,6.881,both,True,False,False,True,False,6.881,,Original value became missing
+64240,NH17 Crossing Boko,2023-09-16 23:00:00,,NH17 Crossing Boko,16-09-2023 23:00,6.942,both,True,False,False,True,False,6.942,,Original value became missing
+64288,NH17 Crossing Boko,2023-09-18 03:00:00,,NH17 Crossing Boko,18-09-2023 03:00,6.928,both,True,False,False,True,False,6.928,,Original value became missing
+64735,NH17 Crossing Boko,2023-09-28 20:00:00,,NH17 Crossing Boko,28-09-2023 20:00,518.771,both,True,False,False,True,False,518.771,,Original value became missing
+65827,NH17 Crossing Boko,2023-10-25 02:00:00,,NH17 Crossing Boko,25-10-2023 02:00,6.999,both,True,False,False,True,False,6.999,,Original value became missing
+66098,NH17 Crossing Boko,2023-10-31 18:00:00,,NH17 Crossing Boko,31-10-2023 18:00,6.999,both,True,False,False,True,False,6.999,,Original value became missing
+66100,NH17 Crossing Boko,2023-10-31 19:00:00,,NH17 Crossing Boko,31-10-2023 19:00,6.999,both,True,False,False,True,False,6.999,,Original value became missing
+66137,NH17 Crossing Boko,2023-11-01 15:00:00,,NH17 Crossing Boko,01-11-2023 15:00,6.0,both,True,False,False,True,False,6.0,,Original value became missing
+66226,NH17 Crossing Boko,2023-11-03 13:00:00,,NH17 Crossing Boko,03-11-2023 13:00,6.999,both,True,False,False,True,False,6.999,,Original value became missing
+68900,NH17 Crossing Boko,2024-01-28 00:00:00,,NH17 Crossing Boko,28-01-2024 00:00,7.008,both,True,False,False,True,False,7.008,,Original value became missing
+68935,NH17 Crossing Boko,2024-01-29 09:00:00,,NH17 Crossing Boko,29-01-2024 09:00,7.008,both,True,False,False,True,False,7.008,,Original value became missing
+69094,NH17 Crossing Boko,2024-02-07 10:00:00,,NH17 Crossing Boko,07-02-2024 10:00,7.012,both,True,False,False,True,False,7.012,,Original value became missing
+69172,NH17 Crossing Boko,2024-02-09 22:00:00,,NH17 Crossing Boko,09-02-2024 22:00,7.006,both,True,False,False,True,False,7.006,,Original value became missing
+69188,NH17 Crossing Boko,2024-02-10 12:00:00,,NH17 Crossing Boko,10-02-2024 12:00,6.997,both,True,False,False,True,False,6.997,,Original value became missing
+69203,NH17 Crossing Boko,2024-02-11 01:00:00,,NH17 Crossing Boko,11-02-2024 01:00,7.007,both,True,False,False,True,False,7.007,,Original value became missing
+69283,NH17 Crossing Boko,2024-02-14 03:00:00,,NH17 Crossing Boko,14-02-2024 03:00,7.008,both,True,False,False,True,False,7.008,,Original value became missing
+69370,NH17 Crossing Boko,2024-02-16 22:00:00,,NH17 Crossing Boko,16-02-2024 22:00,6.999,both,True,False,False,True,False,6.999,,Original value became missing
+69426,NH17 Crossing Boko,2024-02-18 21:00:00,,NH17 Crossing Boko,18-02-2024 21:00,7.025,both,True,False,False,True,False,7.025,,Original value became missing
+69636,NH17 Crossing Boko,2024-02-24 00:00:00,,NH17 Crossing Boko,24-02-2024 00:00,7.025,both,True,False,False,True,False,7.025,,Original value became missing
+69789,NH17 Crossing Boko,2024-02-27 23:00:00,,NH17 Crossing Boko,27-02-2024 23:00,7.034,both,True,False,False,True,False,7.034,,Original value became missing
+70203,NH17 Crossing Boko,2024-03-17 02:00:00,,NH17 Crossing Boko,17-03-2024 02:00,7.022,both,True,False,False,True,False,7.022,,Original value became missing
+70356,NH17 Crossing Boko,2024-03-20 13:00:00,,NH17 Crossing Boko,20-03-2024 13:00,6.0,both,True,False,False,True,False,6.0,,Original value became missing
+70369,NH17 Crossing Boko,2024-03-20 20:00:00,,NH17 Crossing Boko,20-03-2024 20:00,6.999,both,True,False,False,True,False,6.999,,Original value became missing
+70657,NH17 Crossing Boko,2024-04-03 13:00:00,,NH17 Crossing Boko,03-04-2024 13:00,6.999,both,True,False,False,True,False,6.999,,Original value became missing
+70940,NH17 Crossing Boko,2024-04-14 06:00:00,,NH17 Crossing Boko,14-04-2024 06:00,7.9,both,True,False,False,True,False,7.9,,Original value became missing
+71703,NH17 Crossing Boko,2024-05-09 01:00:00,,NH17 Crossing Boko,09-05-2024 01:00,7.196,both,True,False,False,True,False,7.196,,Original value became missing
+71799,NH17 Crossing Boko,2024-05-12 10:00:00,,NH17 Crossing Boko,12-05-2024 10:00,4.777,both,True,False,False,True,False,4.777,,Original value became missing
+73988,NH17 Crossing Boko,2024-12-02 15:00:00,,NH17 Crossing Boko,02-12-2024 15:00,78.285,both,True,False,False,True,False,78.285,,Original value became missing
+74243,NH17 Crossing Boko,2024-12-13 12:00:00,,NH17 Crossing Boko,13-12-2024 12:00,78.285,both,True,False,False,True,False,78.285,,Original value became missing
+74631,NH17 Crossing Boko,2025-01-02 08:00:00,,NH17 Crossing Boko,02-01-2025 08:00,78.285,both,True,False,False,True,False,78.285,,Original value became missing
+75333,NH17 Crossing Boko,2025-01-31 04:00:00,,NH17 Crossing Boko,31-01-2025 04:00,78.285,both,True,False,False,True,False,78.285,,Original value became missing
+75335,NH17 Crossing Boko,2025-01-31 05:00:00,,NH17 Crossing Boko,31-01-2025 05:00,694.285,both,True,False,False,True,False,694.285,,Original value became missing
+76174,NH17 Crossing Boko,2025-03-14 11:00:00,,NH17 Crossing Boko,14-03-2025 11:00,13.9,both,True,False,False,True,False,13.9,,Original value became missing
+76176,NH17 Crossing Boko,2025-03-14 12:00:00,,NH17 Crossing Boko,14-03-2025 12:00,13.6,both,True,False,False,True,False,13.6,,Original value became missing
+76178,NH17 Crossing Boko,2025-03-14 13:00:00,,NH17 Crossing Boko,14-03-2025 13:00,50.238,both,True,False,False,True,False,50.238,,Original value became missing
+76186,NH17 Crossing Boko,2025-03-15 12:00:00,,NH17 Crossing Boko,15-03-2025 12:00,13.6,both,True,False,False,True,False,13.6,,Original value became missing
+76188,NH17 Crossing Boko,2025-03-15 13:00:00,,NH17 Crossing Boko,15-03-2025 13:00,50.238,both,True,False,False,True,False,50.238,,Original value became missing
+76195,NH17 Crossing Boko,2025-03-16 08:00:00,,NH17 Crossing Boko,16-03-2025 08:00,50.238,both,True,False,False,True,False,50.238,,Original value became missing
+76198,NH17 Crossing Boko,2025-03-16 10:00:00,,NH17 Crossing Boko,16-03-2025 10:00,50.238,both,True,False,False,True,False,50.238,,Original value became missing
+76200,NH17 Crossing Boko,2025-03-16 11:00:00,,NH17 Crossing Boko,16-03-2025 11:00,14.1,both,True,False,False,True,False,14.1,,Original value became missing
+76202,NH17 Crossing Boko,2025-03-16 12:00:00,,NH17 Crossing Boko,16-03-2025 12:00,13.6,both,True,False,False,True,False,13.6,,Original value became missing
+76204,NH17 Crossing Boko,2025-03-16 13:00:00,,NH17 Crossing Boko,16-03-2025 13:00,50.238,both,True,False,False,True,False,50.238,,Original value became missing
+76206,NH17 Crossing Boko,2025-03-16 14:00:00,,NH17 Crossing Boko,16-03-2025 14:00,13.8,both,True,False,False,True,False,13.8,,Original value became missing
+76208,NH17 Crossing Boko,2025-03-16 15:00:00,,NH17 Crossing Boko,16-03-2025 15:00,13.4,both,True,False,False,True,False,13.4,,Original value became missing
+76220,NH17 Crossing Boko,2025-03-17 08:00:00,,NH17 Crossing Boko,17-03-2025 08:00,13.9,both,True,False,False,True,False,13.9,,Original value became missing
+76222,NH17 Crossing Boko,2025-03-17 09:00:00,,NH17 Crossing Boko,17-03-2025 09:00,50.238,both,True,False,False,True,False,50.238,,Original value became missing
+76224,NH17 Crossing Boko,2025-03-17 10:00:00,,NH17 Crossing Boko,17-03-2025 10:00,50.238,both,True,False,False,True,False,50.238,,Original value became missing
+76239,NH17 Crossing Boko,2025-03-18 08:00:00,,NH17 Crossing Boko,18-03-2025 08:00,13.2,both,True,False,False,True,False,13.2,,Original value became missing
+76241,NH17 Crossing Boko,2025-03-18 09:00:00,,NH17 Crossing Boko,18-03-2025 09:00,13.8,both,True,False,False,True,False,13.8,,Original value became missing
+76243,NH17 Crossing Boko,2025-03-18 10:00:00,,NH17 Crossing Boko,18-03-2025 10:00,14.3,both,True,False,False,True,False,14.3,,Original value became missing
+76245,NH17 Crossing Boko,2025-03-18 11:00:00,,NH17 Crossing Boko,18-03-2025 11:00,14.3,both,True,False,False,True,False,14.3,,Original value became missing
+76247,NH17 Crossing Boko,2025-03-18 12:00:00,,NH17 Crossing Boko,18-03-2025 12:00,13.1,both,True,False,False,True,False,13.1,,Original value became missing
+76249,NH17 Crossing Boko,2025-03-18 13:00:00,,NH17 Crossing Boko,18-03-2025 13:00,15.238,both,True,False,False,True,False,15.238,,Original value became missing
+76251,NH17 Crossing Boko,2025-03-18 14:00:00,,NH17 Crossing Boko,18-03-2025 14:00,13.8,both,True,False,False,True,False,13.8,,Original value became missing
+76265,NH17 Crossing Boko,2025-03-19 10:00:00,,NH17 Crossing Boko,19-03-2025 10:00,13.8,both,True,False,False,True,False,13.8,,Original value became missing
+76267,NH17 Crossing Boko,2025-03-19 11:00:00,,NH17 Crossing Boko,19-03-2025 11:00,13.9,both,True,False,False,True,False,13.9,,Original value became missing
+76269,NH17 Crossing Boko,2025-03-19 12:00:00,,NH17 Crossing Boko,19-03-2025 12:00,13.0,both,True,False,False,True,False,13.0,,Original value became missing
+76271,NH17 Crossing Boko,2025-03-19 13:00:00,,NH17 Crossing Boko,19-03-2025 13:00,13.6,both,True,False,False,True,False,13.6,,Original value became missing
+76273,NH17 Crossing Boko,2025-03-19 14:00:00,,NH17 Crossing Boko,19-03-2025 14:00,13.4,both,True,False,False,True,False,13.4,,Original value became missing
+76278,NH17 Crossing Boko,2025-03-19 19:00:00,,NH17 Crossing Boko,19-03-2025 19:00,12.1,both,True,False,False,True,False,12.1,,Original value became missing
+76284,NH17 Crossing Boko,2025-03-20 07:00:00,,NH17 Crossing Boko,20-03-2025 07:00,15.238,both,True,False,False,True,False,15.238,,Original value became missing
+76289,NH17 Crossing Boko,2025-03-20 11:00:00,,NH17 Crossing Boko,20-03-2025 11:00,15.238,both,True,False,False,True,False,15.238,,Original value became missing

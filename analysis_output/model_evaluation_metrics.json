@@ -1,0 +1,170 @@
+{
+  "weather": {
+    "accuracy": 1.0,
+    "precision_weighted": 1.0,
+    "recall_weighted": 1.0,
+    "f1_score_weighted": 1.0,
+    "mse": 0.001009,
+    "rmse": 0.031763,
+    "confusion_matrix": {
+      "classes": [
+        "LOW",
+        "MODERATE",
+        "HIGH",
+        "CRITICAL"
+      ],
+      "matrix": [
+        [
+          2036,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          107,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          68,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1389
+        ]
+      ]
+    }
+  },
+  "flood": {
+    "accuracy": 0.9967,
+    "precision_weighted": 0.9967,
+    "recall_weighted": 0.9967,
+    "f1_score_weighted": 0.9967,
+    "mse": 0.00153,
+    "rmse": 0.039116,
+    "confusion_matrix": {
+      "classes": [
+        "LOW",
+        "MODERATE",
+        "HIGH",
+        "CRITICAL"
+      ],
+      "matrix": [
+        [
+          2035,
+          0,
+          1,
+          0
+        ],
+        [
+          4,
+          101,
+          1,
+          1
+        ],
+        [
+          0,
+          1,
+          66,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1386
+        ]
+      ]
+    }
+  },
+  "terrain": {
+    "accuracy": 0.9997,
+    "precision_weighted": 0.9997,
+    "recall_weighted": 0.9997,
+    "f1_score_weighted": 0.9997,
+    "mse": 0.000992,
+    "rmse": 0.031498,
+    "confusion_matrix": {
+      "classes": [
+        "LOW",
+        "MODERATE",
+        "HIGH",
+        "CRITICAL"
+      ],
+      "matrix": [
+        [
+          2036,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          107,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          67,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1389
+        ]
+      ]
+    }
+  },
+  "satellite": {
+    "accuracy": 1.0,
+    "precision_weighted": 1.0,
+    "recall_weighted": 1.0,
+    "f1_score_weighted": 1.0,
+    "mse": 0.000968,
+    "rmse": 0.031109,
+    "confusion_matrix": {
+      "classes": [
+        "LOW",
+        "MODERATE",
+        "HIGH",
+        "CRITICAL"
+      ],
+      "matrix": [
+        [
+          2036,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          107,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          68,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1389
+        ]
+      ]
+    }
+  }
+}

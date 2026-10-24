@@ -1,0 +1,84 @@
+
+============================================================
+RAINFALL VALIDATION
+============================================================
+Rows: 67,102
+Columns: 23
+Stations: 49
+Missing station names: 0
+Invalid timestamps: 0
+Missing measurements: 4,493
+Rows with duplicate station/timestamp keys: 0
+
+Measurement statistics:
+count    62609.000000
+mean        69.432668
+std        107.773877
+min          0.100000
+25%          1.000000
+50%         14.500000
+75%         94.900000
+max       8308.000000
+
+Rainfall-specific checks:
+Negative rainfall values remaining: 0
+Readings above 250 mm: 7,576
+Review high rainfall readings against source records and measurement definitions before deciding how to handle them.
+
+Timestamp gap analysis:
+Gaps longer than one hour: 23,014
+Largest gap: 19,729.00 hours
+Gaps longer than 24 hours: 5,083
+Note: a time gap indicates missing observations, not zero rainfall or zero river level.
+
+============================================================
+RIVER VALIDATION
+============================================================
+Rows: 61,856
+Columns: 26
+Stations: 3
+Missing station names: 0
+Invalid timestamps: 0
+Missing measurements: 1,191
+Rows with duplicate station/timestamp keys: 0
+
+Measurement statistics:
+count    60665.000000
+mean        16.852210
+std         23.745774
+min          0.001000
+25%          2.135000
+50%          5.763000
+75%         30.467000
+max        927.970000
+
+River-specific checks:
+Negative river levels: 0
+Readings above 50 m requiring review: 7,675
+Saved readings for review to: C:\Users\prajw\Downloads\design_project\dataset\processed\river_values_for_review.csv
+
+Highest river readings:
+                   Station Data Acquisition Time  River Water Level Telemetry Hourly (meter)  _source_row  river_level_review_flag         river_level_review_reason
+        NH17 Crossing Boko   2024-03-16 17:00:00                                     927.970        70196                     True large_deviation_from_local_median
+        NH17 Crossing Boko   2024-05-27 18:00:00                                     640.000        71846                     True large_deviation_from_local_median
+        NH17 Crossing Boko   2024-01-25 14:00:00                                     295.033        68884                     True large_deviation_from_local_median
+        NH17 Crossing Boko   2024-05-30 10:00:00                                     256.000        71863                     True large_deviation_from_local_median
+        NH17 Crossing Boko   2024-05-30 09:00:00                                     192.003        71862                     True large_deviation_from_local_median
+NH15 Crossing Dhansirighat   2025-04-28 03:00:00                                      80.605        15154                    False                               NaN
+NH15 Crossing Dhansirighat   2025-04-27 20:00:00                                      80.599        15147                    False                               NaN
+NH15 Crossing Dhansirighat   2025-04-28 05:00:00                                      80.599        15156                    False                               NaN
+NH15 Crossing Dhansirighat   2025-04-27 19:00:00                                      80.598        15146                    False                               NaN
+NH15 Crossing Dhansirighat   2025-04-28 04:00:00                                      80.596        15155                    False                               NaN
+Important: readings above 50 m are flagged for review only. Do not automatically delete them.
+
+Timestamp gap analysis:
+Gaps longer than one hour: 2,139
+Largest gap: 4,205.00 hours
+Gaps longer than 24 hours: 56
+Note: a time gap indicates missing observations, not zero rainfall or zero river level.
+
+============================================================
+VALIDATION RESULT
+============================================================
+Both files contain the required columns.
+Structural validation completed. This does not certify that every measurement is correct.

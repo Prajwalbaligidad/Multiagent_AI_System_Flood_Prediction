@@ -1,0 +1,4 @@
+Station,row_count,missing_measurements,minimum,median,maximum,standard_deviation,missing_percent
+NH15 Crossing Dhansirighat,15329,4,0.001,3.004,80.605,24.24171268642445,0.026
+NH15 Crossing Fakirpara Tangni,25831,1042,0.001,5.763,63.468,20.258091844603555,4.034
+NH17 Crossing Boko,20696,145,0.007,6.927,927.97,26.984141505727415,0.701

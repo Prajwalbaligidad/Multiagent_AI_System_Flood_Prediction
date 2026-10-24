@@ -1,0 +1,10 @@
+SlNo,Station,Agency,State LGD Code,State,District LGD Code,District,Tehsil,Block,Village,River,Basin,Tributary,Subtributary,SubSubtributary,Local River,Latitude,Longitude,Data Acquisition Time,Telemetry Hourly Rainfall (mm),negative_rainfall,high_rainfall_review,extreme_rainfall_review
+22823,Dumni WR site,Assam,18,Assam,287,GOALPARA,-,-,-,-,-,-,-,-,-,26.077134,90.756729,2024-04-07 05:00:00,-178.5,True,False,False
+68416,Pandu WR Dept Office,Assam,18,Assam,618,Kamrup Metropolitan,-,-,-,-,-,-,-,-,-,26.16861111,91.67166667,2023-12-25 01:30:00,-36.0,True,False,False
+68770,Pandu WR Dept Office,Assam,18,Assam,618,Kamrup Metropolitan,-,-,-,-,-,-,-,-,-,26.16861111,91.67166667,2024-08-27 22:30:00,-12.0,True,False,False
+70011,Silgat WR office,Assam,18,Assam,297,NAGAON,-,-,-,-,-,-,-,-,-,26.59777778,92.925,2023-10-04 06:00:00,-328.0,True,False,False
+71133,Silgat WR office,Assam,18,Assam,297,NAGAON,-,-,-,-,-,-,-,-,-,26.59777778,92.925,2024-07-23 05:30:00,-98.0,True,False,False
+71579,Silgat WR office,Assam,18,Assam,297,NAGAON,-,-,-,-,-,-,-,-,-,26.59777778,92.925,2024-10-24 01:00:00,-151.5,True,False,False
+71925,Silgat WR office,Assam,18,Assam,297,NAGAON,-,-,-,-,-,-,-,-,-,26.59777778,92.925,2024-12-20 22:00:00,-264.0,True,False,False
+71968,Silgat WR office,Assam,18,Assam,297,NAGAON,-,-,-,-,-,-,-,-,-,26.59777778,92.925,2024-12-25 14:00:00,-314.5,True,False,False
+72010,Silgat WR office,Assam,18,Assam,297,NAGAON,-,-,-,-,-,-,-,-,-,26.59777778,92.925,2025-01-04 02:00:00,-198.5,True,False,False

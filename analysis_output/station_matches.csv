@@ -1,0 +1,4 @@
+river_station,name_match,name_match_type,nearest_rain_station,distance_km,within_radius
+NH15 Crossing Dhansirighat,NH15 Crossing Dhansirighat,exact,NH15 Crossing Dhansirighat,0.0,True
+NH15 Crossing Fakirpara Tangni,NH15 Crossing Fakirpara Tangni,exact,NH15 Crossing Fakirpara Tangni,0.0,True
+NH17 Crossing Boko,NH17 Crossing Boko,exact,NH17 Crossing Boko,0.0,True

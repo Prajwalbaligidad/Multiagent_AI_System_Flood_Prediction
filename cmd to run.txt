@@ -1,0 +1,2 @@
+to run main file: python c:\Users\prajw\Downloads\flood_disaster_multiagent_system\src\run_system.py
+to run demo input data: python c:\Users\prajw\Downloads\flood_disaster_multiagent_system\src\interactive_demo.py

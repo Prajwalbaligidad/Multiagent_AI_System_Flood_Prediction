@@ -1,0 +1,6 @@
+station_id,station_name,district,latitude,longitude,elevation_m,slope_deg,soil_type,infiltration_capacity_mmh,land_cover_class,runoff_coefficient,drainage_density_km_km2,topographic_wetness_index
+STN_001_GUW,Guwahati_AWRMI,Kamrup Metropolitan,26.1445,91.7362,55.0,2.5,Silty Clay Loam,8.5,Urban / Built-up,0.78,1.57,12.25
+STN_002_DHU,Dhubri_Ghat,Dhubri,26.0198,89.9889,28.0,0.6,Alluvial Clay,4.2,Riverine Floodplain / Agricultural,0.38,1.29,13.58
+STN_003_SIL,Silchar_Barak,Cachar,24.8333,92.7789,42.0,1.8,Clayey Silt,6.0,Semi-Urban / Lowland,0.65,1.47,12.74
+STN_004_UDA,Udalguri_Dhansiri,Udalguri,26.6958,92.2578,165.0,11.5,Gravelly Sandy Loam,22.0,Foothills / Forest / Tea Garden,0.42,2.92,5.95
+STN_005_BAR,Barpeta_Beki,Barpeta,26.32,91.005,35.0,0.8,Alluvial Loam,7.0,Wetlands / Cropland,0.32,1.32,13.44

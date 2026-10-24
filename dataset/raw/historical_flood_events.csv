@@ -1,0 +1,14 @@
+event_id,station_id,year,peak_water_level_m,severity,return_period_yrs,flood_duration_days,affected_population_k,breach_reported
+FLD_HIST_2004,STN_001_GUW,2004,51.46,Catastrophic,50,18,210.0,True
+FLD_HIST_2012,STN_001_GUW,2012,50.92,Severe,20,12,140.0,False
+FLD_HIST_2020,STN_001_GUW,2020,51.05,Severe,25,15,185.0,True
+FLD_HIST_2022,STN_001_GUW,2022,51.3,Catastrophic,35,21,260.0,True
+FLD_HIST_2016,STN_002_DHU,2016,30.22,Severe,25,16,320.0,True
+FLD_HIST_2020,STN_002_DHU,2020,30.4,Catastrophic,35,22,450.0,True
+FLD_HIST_2022,STN_002_DHU,2022,30.52,Catastrophic,50,25,520.0,True
+FLD_HIST_2004,STN_003_SIL,2004,21.65,Severe,30,14,180.0,True
+FLD_HIST_2022,STN_003_SIL,2022,21.98,Catastrophic (Bethukandi breach),100,28,380.0,True
+FLD_HIST_2017,STN_004_UDA,2017,70.8,Severe Flash Flood,20,4,45.0,True
+FLD_HIST_2022,STN_004_UDA,2022,71.1,Severe Flash Flood,25,6,62.0,True
+FLD_HIST_2019,STN_005_BAR,2019,45.85,Severe,20,19,290.0,True
+FLD_HIST_2022,STN_005_BAR,2022,46.25,Catastrophic,40,24,410.0,True
