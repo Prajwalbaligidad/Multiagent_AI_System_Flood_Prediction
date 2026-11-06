@@ -1,0 +1,96 @@
+{
+  "report_metadata": {
+    "report_id": "IAP-ASSESS_LIVE_MAN_1286_2026-11-03_21-48-38",
+    "generated_at": "2026-11-03T21:48:47.180910",
+    "station_name": "Mangalure",
+    "district": "Dakshina Kannada",
+    "river": "Dakshina Kannada River Drainage Basin",
+    "timestamp": "2026-11-03 21:48:38"
+  },
+  "risk_assessment": {
+    "assessment_id": "ASSESS_LIVE_MAN_1286_2026-11-03_21-48-38",
+    "station_id": "LIVE_MAN_1286",
+    "station_name": "Mangalure",
+    "district": "Dakshina Kannada",
+    "river_name": "Dakshina Kannada River Drainage Basin",
+    "timestamp": "2026-11-03 21:48:38",
+    "composite_risk_score": 0.44,
+    "composite_confidence": 0.9,
+    "primary_hazard_driver": "DOMINANT_TERRAIN_ELEVATION",
+    "hard_safety_override_triggered": false,
+    "flood_occurrence_confirmed": false,
+    "flood_event_status": "ELEVATED_WATCH_ADVISORY",
+    "flood_probability_pct": 44.0,
+    "overall_severity_tier": "MODERATE",
+    "estimated_lead_time": "12 TO 24 HOURS -- POTENTIAL SURGE IF PRECIPITATION PERSISTS",
+    "identified_vulnerable_locations": [
+      "Dakshina Kannada River Drainage Basin Low-lying Embankments",
+      "Dakshina Kannada Central Sluice Gate Basin"
+    ],
+    "headline_verdict": "ELEVATED FLOOD WATCH: River Dakshina Kannada River Drainage Basin is rising; drainage networks under pressure.",
+    "chain_of_thought_reasoning": "1. METEOROLOGICAL ANALYSIS: No active precipitation recorded (0.0 mm/h). Atmospheric pressure and wind metrics are stable.\n2. HYDRAULIC & RIVERINE STAGE: River water level (42.150 m) is safely 3.35 m below Danger Level (45.50 m).\n3. TOPOGRAPHIC RUNOFF BEHAVIOR: Catchment terrain has low permeability (Loam, runoff coefficient 0.55, TWI 16.8), accelerating overland surge directly into drainage networks (choke ratio: 8%).\n4. SPACEBORNE OBSERVATION: Clear sky condition (20% cloud); optical NDWI (-0.050) and SAR radar (-9.2 dB) corroborate surface water extent.\n5. CROSS-DOMAIN SYNTHESIS: Multi-agent consensus weighted score evaluates to 0.440 with 90.2% sensor certainty. Conclusion: ELEVATED FLOOD WATCH: River Dakshina Kannada River Drainage Basin is rising; drainage networks under pressure.",
+    "weather_risk": 0.217,
+    "flood_risk": 0.714,
+    "terrain_risk": 0.75,
+    "satellite_risk": 0.065,
+    "specialist_flags": [
+      "HIGH_TOPOGRAPHIC_WETNESS_DEPRESSION",
+      "OPTICAL_SENSOR_CLOUD_OCCLUDED",
+      "SOIL_SATURATION_EXCESS_RUNOFF"
+    ],
+    "inter_agent_messages_count": 2
+  },
+  "decision_and_early_warning": {
+    "alert_code": "YELLOW_ELEVATED_WATCH_ADVISORY",
+    "alert_level_display": "YELLOW (LEVEL 1 - ELEVATED READINESS & MONITORING)",
+    "siren_command": "STANDBY_NO_SIREN_DISPATCH",
+    "public_broadcast_sms": "[URGENT ROUTE DIVERSION] [CRITICAL EVACUATION DIVERSION]: Lowland Shelter (Dakshina Kannada Ward Primary School & Relief Center) has been COMPROMISED by expanding floodwaters! DO NOT HEAD TOWARDS LOWLANDS OR RIVERBANKS. All evacuees must IMMEDIATELY DIVERT to the PHYSICAL SAFE HAVEN: SDM stadium (Capacity: 20000 people, Distance: 50.12 km). [YELLOW FLOOD ADVISORY] Elevated water levels and heavy showers in Dakshina Kannada. Sluice gates and pump operators are on standby. Low-lying areas monitor local updates.",
+    "recommended_tactical_actions": [
+      {
+        "priority": "P0_IMMEDIATE (0-15 Mins)",
+        "category": "DYNAMIC_EVACUATION_REROUTING",
+        "action": "Deploy civil defense wardens to seal off inundated Shelter A access road. Direct all citizen convoys along Western Ridge Parkway to Shelter B (SDM stadium).",
+        "designated_agency": "Traffic Police & SDRF Rapid Response"
+      },
+      {
+        "priority": "P1_TACTICAL (1-3 Hours)",
+        "category": "TELEMETRY AUDIT",
+        "action": "Increase ultrasonic gauge and rain sensor sampling rate from 60 minutes to 15 minutes.",
+        "designated_agency": "Central Water Commission (CWC) / IMD"
+      },
+      {
+        "priority": "P2_SUSTAINED (3-6 Hours)",
+        "category": "DRAIN CLEARANCE",
+        "action": "Clear solid waste choke points and debris from primary municipal stormwater grates.",
+        "designated_agency": "Municipal Solid Waste Management"
+      }
+    ],
+    "human_approval_checklist": [
+      {
+        "item_id": "CHK_01_EVACUATION",
+        "checkpoint": "District Magistrate / Incident Commander Authorization for Evacuation in Dakshina Kannada",
+        "status": "NOT_REQUIRED",
+        "sign_off_authority": "Deputy Commissioner / District Magistrate"
+      },
+      {
+        "item_id": "CHK_02_NDRF_MOBILIZATION",
+        "checkpoint": "NDRF / SDRF Unit Deployment Requisition Authorization",
+        "status": "STANDBY",
+        "sign_off_authority": "Superintendent of Police & DDMA Coordinator"
+      },
+      {
+        "item_id": "CHK_03_SLUICE_GATES",
+        "checkpoint": "Hydraulic Sluice Gate Closure & Embankment Barrier Lock Authorization on Dakshina Kannada River Drainage Basin",
+        "status": "MONITORING",
+        "sign_off_authority": "Chief Engineer, Water Resources Department"
+      },
+      {
+        "item_id": "CHK_04_PUBLIC_BROADCAST",
+        "checkpoint": "Dissemination of Emergency SMS Cell-Broadcast & Media Sirens",
+        "status": "NOT_REQUIRED",
+        "sign_off_authority": "Public Relations Officer & DDMA Control Room"
+      }
+    ],
+    "incident_commander_guidance": "EXECUTION DIRECTIVE FOR DAKSHINA KANNADA INCIDENT COMMAND: Current posture is set to YELLOW_ELEVATED_WATCH_ADVISORY. Maintain heightened surveillance and verify all drainage choke points."
+  }
+}

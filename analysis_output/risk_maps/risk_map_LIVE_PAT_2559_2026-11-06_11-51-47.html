@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disaster Risk & Dynamic Evacuation Map - Patna</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <style>
+        body { margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #0f172a; color: #f8fafc; }
+        #header { background: #1e293b; padding: 14px 24px; border-bottom: 2px solid #334155; display: flex; justify-content: space-between; align-items: center; }
+        #header h1 { margin: 0; font-size: 20px; color: #38bdf8; }
+        .badge-container { display: flex; gap: 10px; }
+        .badge { padding: 6px 14px; border-radius: 9999px; font-weight: bold; font-size: 13px; letter-spacing: 0.5px; }
+        #risk-badge { background: #dc2626; color: white; }
+        #evac-badge { background: #dc2626; color: white; }
+        #map { height: calc(100vh - 140px); width: 100%; }
+        #info-panel { background: #1e293b; padding: 12px 24px; font-size: 13px; color: #cbd5e1; display: flex; gap: 24px; border-top: 1px solid #334155; flex-wrap: wrap; }
+        .badge-tag { font-weight: bold; color: #f8fafc; }
+    </style>
+</head>
+<body>
+    <div id="header">
+        <div>
+            <h1>DYNAMIC RISK & EVACUATION SAFETY MAP &bull; PATNA</h1>
+            <small style="color: #94a3b8;">River Patna River Drainage Basin Basin &bull; District: Patna &bull; Timestamp: 2026-11-06 11:51:47</small>
+        </div>
+        <div class="badge-container">
+            <div id="risk-badge" class="badge">CRITICAL RISK (95%)</div>
+            <div id="evac-badge" class="badge">EVACUATION: 🚨 PRIMARY CAMP FLOODED -> DIVERTED TO ALTERNATIVE HAVEN</div>
+        </div>
+    </div>
+    <div id="map"></div>
+    <div id="info-panel">
+        <div><span class="badge-tag">Lead Time:</span> IMMEDIATE (< 2 Hours) -- ACTIVE DELUGE / INUNDATION</div>
+        <div><span class="badge-tag">Evacuation Allocation:</span> NIT Patna & Patna University Elevated High-Ground Campus (+8.0m elevated)</div>
+        <div><span class="badge-tag">Re-Assessment Directive:</span> [CRITICAL EVACUATION DIVERSION]: Primary Camp (Patna Central Flood Relief Camp & High Scho...</div>
+    </div>
+    <script>
+        var map = L.map('map').setView([25.5941, 85.1356], 13);
+
+        // 100% Free Public Map Tile Servers (NO API KEY required, NO watermark)
+        // 1. Esri World Street & Hydrology Map
+        var streetLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+            maxZoom: 19,
+            attribution: 'Tiles &copy; Esri, DeLorme, NAVTEQ | Autonomous Multi-Agent AI System'
+        });
+
+        // 2. Esri High-Resolution World Satellite Imagery
+        var satelliteLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+            maxZoom: 19,
+            attribution: 'Tiles &copy; Esri, DigitalGlobe, GeoEye, Earthstar Geographics'
+        });
+
+        // 3. Esri National Geographic Topographic Map
+        var topoLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}', {
+            maxZoom: 16,
+            attribution: 'Tiles &copy; National Geographic, Esri'
+        });
+
+        // Base Layer Catalog
+        var baseMaps = {
+            "🗺️ Street & River Network (Esri)": streetLayer,
+            "🛰️ Spaceborne Satellite (Esri)": satelliteLayer,
+            "⛰️ Topographic Elevation (Esri)": topoLayer
+        };
+
+        var userApiKey = "9e6a7dfe-dee5-4113-b625-a11cbc47435f".trim();
+        if (userApiKey) {
+            var stadiaSmooth = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{y}/{x}{r}.png?api_key=' + userApiKey, {
+                maxZoom: 20,
+                attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a>'
+            });
+            var stadiaDark = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{y}/{x}{r}.png?api_key=' + userApiKey, {
+                maxZoom: 20,
+                attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a>'
+            });
+            var cartoVoyager = L.tileLayer('https://tiles.stadiamaps.com/tiles/carto_voyager/{z}/{y}/{x}{r}.png?api_key=' + userApiKey, {
+                maxZoom: 20,
+                attribution: '&copy; CARTO, &copy; Stadia Maps'
+            });
+
+            baseMaps["🧭 CARTO / Stadia Smooth"] = stadiaSmooth;
+            baseMaps["🌃 CARTO / Stadia Dark"] = stadiaDark;
+            baseMaps["🗺️ CARTO Voyager"] = cartoVoyager;
+            stadiaSmooth.addTo(map);
+        } else {
+            streetLayer.addTo(map);
+        }
+
+        // Layer Switcher Control (Top Right)
+        L.control.layers(baseMaps).addTo(map);
+
+        // Station Hazard Origin Marker
+        var stationMarker = L.marker([25.5941, 85.1356]).addTo(map)
+            .bindPopup("<b>Patna [MONITORING NODE]</b><br>River: Patna River Drainage Basin<br>Status: CONFIRMED_FLOOD_DISASTER<br>Risk Score: 0.950")
+            .openPopup();
+
+        // Area Risk Perimeter Circle
+        var areaCircle = L.circle([25.5941, 85.1356], {
+            color: '#dc2626',
+            fillColor: '#dc2626',
+            fillOpacity: 0.30,
+            radius: 3500
+        }).addTo(map).bindPopup("<b>🔴 RED ALERT INUNDATION PERIMETER</b><br>Radius: 3500 meters<br>Severity: CRITICAL");
+
+        
+        // [CRITICAL RISK - PRIMARY CAMP INUNDATED -> DIVERSION TO ALTERNATIVE SAFE HAVEN]
+        // 1. Primary Camp: Marked COMPROMISED & INUNDATED
+        var compromisedMarker = L.circleMarker([25.6076, 85.1451], {
+            color: '#dc2626',
+            fillColor: '#b91c1c',
+            fillOpacity: 0.9,
+            radius: 12,
+            weight: 3
+        }).addTo(map).bindPopup("<b style='color:#dc2626;'>⚠️ PRIMARY CAMP: COMPROMISED & FLOODED</b><br><b>Patna Central Flood Relief Camp & High School Ground</b><br>Status: INUNDATION CUTOFF DETECTED<br>Reason: Flood perimeter (3500m) covers access path.<br><b style='color:#dc2626;'>DO NOT PROCEED HERE! DIVERT TO HIGH GROUND!</b>");
+
+        // 2. Aborted Inundated Route (Red Dashed)
+        var abortedRoute = L.polyline([[25.5941, 85.1356], [25.60085, 85.14035], [25.6076, 85.1451]], {
+            color: '#dc2626',
+            weight: 4,
+            dashArray: '6, 8',
+            opacity: 0.85
+        }).addTo(map).bindPopup("<b style='color:#dc2626;'>❌ ABORTED ROUTE - INUNDATED</b><br>Submerged under flood surge. Impassable for civilian transit.");
+
+        // 3. Alternative Elevated Safe Haven (University / Civic Center / Arena)
+        var altMarker = L.circleMarker([25.6207, 85.1722], {
+            color: '#10b981',
+            fillColor: '#059669',
+            fillOpacity: 0.95,
+            radius: 14,
+            weight: 3
+        }).addTo(map).bindPopup("<b style='color:#10b981;'>🟢 ALTERNATIVE HIGH-GROUND SAFE HAVEN</b><br><b>NIT Patna & Patna University Elevated High-Ground Campus</b><br><b>Facility Type:</b> University & Technical Campus<br><b>Elevation:</b> 58.0m (+8.0m elevated)<br><b>Capacity:</b> 22,000 evacuees<br><b>Status:</b> ACTIVE & VERIFIED SECURE HIGH GROUND");
+
+        // 4. Diverted Safe High-Ground Route (Solid Green)
+        var safeRoute = L.polyline([[25.5941, 85.1356], [25.60288, 85.14768], [25.61166, 85.15976], [25.6207, 85.1722]], {
+            color: '#10b981',
+            weight: 6,
+            opacity: 0.95
+        }).addTo(map).bindPopup("<b style='color:#10b981;'>✅ DESIGNATED SAFE DIVERTED CORRIDOR</b><br>High-ground route leading away from river inundation to <b>NIT Patna & Patna University Elevated High-Ground Campus</b>.");
+        
+    </script>
+</body>
+</html>

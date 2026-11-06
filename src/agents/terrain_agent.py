@@ -57,7 +57,7 @@ class TerrainAgent(BaseAutonomousAIAgent):
         if surge_index >= 2.0 or (cum_24h_rain >= 80.0 and infilt_cap <= 8.0):
             critical_flags.append("SOIL_SATURATION_EXCESS_RUNOFF")
 
-        if twi >= 12.5:
+        if twi >= 12.5 and cum_24h_rain >= 15.0:
             critical_flags.append("HIGH_TOPOGRAPHIC_WETNESS_DEPRESSION")
 
         self.beliefs["critical_flags"] = critical_flags
@@ -77,6 +77,13 @@ class TerrainAgent(BaseAutonomousAIAgent):
             score = 0.85 if (surge_index >= 2.0 or (cum_24h_rain >= 80.0 and infilt_cap <= 6.0)) else 0.05
             risk_score = score
             risk_level = "CRITICAL" if score >= 0.70 else "LOW"
+
+        # Physical dry weather sanity check
+        if cum_24h_rain < 5.0 and surge_index < 0.5:
+            risk_score = min(risk_score, 0.05)
+            risk_level = "LOW"
+            critical_flags = []
+            self.beliefs["critical_flags"] = []
 
         # Autonomous Runoff Surge Escalation
         if surge_index >= 2.0 and risk_level == "LOW":

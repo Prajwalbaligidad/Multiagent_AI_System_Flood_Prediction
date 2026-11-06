@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: floodguard-ai
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn src.web_dashboard:app --bind 0.0.0.0:$PORT --workers 2 --threads 4 --timeout 120
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.8
+      - key: OPENBLAS_NUM_THREADS
+        value: 1
+      - key: OMP_NUM_THREADS
+        value: 1

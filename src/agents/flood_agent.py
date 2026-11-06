@@ -81,13 +81,30 @@ class FloodAgent(BaseAutonomousAIAgent):
             risk_score = ml_pred["ml_risk_score"]
             risk_level = ml_pred["ml_predicted_level"]
         else:
-            risk_score = 0.95 if water_level >= danger_level else (0.65 if water_level >= warning_level else 0.05)
+            risk_score = 0.95 if (danger_level > 0 and water_level >= danger_level) else (0.65 if (warning_level > 0 and water_level >= warning_level) else 0.05)
             risk_level = "CRITICAL" if risk_score >= 0.75 else "LOW"
 
-        # Autonomous Safety Veto
-        if water_level >= danger_level:
+        # Autonomous Physical Hydrologic Guardrails
+        is_physically_safe = (
+            (danger_level > 0 and (danger_level - water_level) >= 0.8) and
+            (warning_level > 0 and (warning_level - water_level) >= 0.3) and
+            waterlogging < 15.0 and
+            rise_3h < 0.25 and
+            choke_ratio < 0.50
+        )
+
+        if is_physically_safe:
+            risk_score = min(risk_score, 0.05)
+            risk_level = "LOW"
+            critical_flags = []
+            self.beliefs["critical_flags"] = []
+        elif danger_level > 0 and water_level >= danger_level:
             risk_level = "CRITICAL"
             risk_score = max(risk_score, 0.95)
+        elif warning_level > 0 and water_level >= warning_level:
+            if risk_level == "LOW":
+                risk_level = "MODERATE"
+                risk_score = max(risk_score, 0.40)
 
         dispatched_count = 0
         self.intentions = []

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disaster Risk & Dynamic Evacuation Map - Goa</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <style>
+        body { margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #0f172a; color: #f8fafc; }
+        #header { background: #1e293b; padding: 14px 24px; border-bottom: 2px solid #334155; display: flex; justify-content: space-between; align-items: center; }
+        #header h1 { margin: 0; font-size: 20px; color: #38bdf8; }
+        .badge-container { display: flex; gap: 10px; }
+        .badge { padding: 6px 14px; border-radius: 9999px; font-weight: bold; font-size: 13px; letter-spacing: 0.5px; }
+        #risk-badge { background: #dc2626; color: white; }
+        #evac-badge { background: #dc2626; color: white; }
+        #map { height: calc(100vh - 140px); width: 100%; }
+        #info-panel { background: #1e293b; padding: 12px 24px; font-size: 13px; color: #cbd5e1; display: flex; gap: 24px; border-top: 1px solid #334155; flex-wrap: wrap; }
+        .badge-tag { font-weight: bold; color: #f8fafc; }
+    </style>
+</head>
+<body>
+    <div id="header">
+        <div>
+            <h1>DYNAMIC RISK & EVACUATION SAFETY MAP &bull; GOA</h1>
+            <small style="color: #94a3b8;">River South Goa River Drainage Basin Basin &bull; District: South Goa &bull; Timestamp: 2026-11-05 14:19:01</small>
+        </div>
+        <div class="badge-container">
+            <div id="risk-badge" class="badge">CRITICAL RISK (95%)</div>
+            <div id="evac-badge" class="badge">EVACUATION STATUS: 🚨 DIVERTED TO SHELTER B (HIGH GROUND)</div>
+        </div>
+    </div>
+    <div id="map"></div>
+    <div id="info-panel">
+        <div><span class="badge-tag">Lead Time:</span> IMMEDIATE (< 2 Hours) -- ACTIVE DELUGE / INUNDATION</div>
+        <div><span class="badge-tag">Active Safe Refuge:</span> Fatorda Stadium (Jawaharlal Nehru Stadium, Goa) (+19.0m elevated)</div>
+        <div><span class="badge-tag">Re-Assessment Directive:</span> [CRITICAL EVACUATION DIVERSION]: Lowland Shelter (South Goa Ward Primary School & Relief C...</div>
+    </div>
+    <script>
+        var map = L.map('map').setView([15.2993, 74.0], 13);
+
+        // 100% Free Public Map Tile Servers (NO API KEY required, NO watermark)
+        // 1. Esri World Street & Hydrology Map
+        var streetLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+            maxZoom: 19,
+            attribution: 'Tiles &copy; Esri, DeLorme, NAVTEQ | Autonomous Multi-Agent AI System'
+        });
+
+        // 2. Esri High-Resolution World Satellite Imagery
+        var satelliteLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+            maxZoom: 19,
+            attribution: 'Tiles &copy; Esri, DigitalGlobe, GeoEye, Earthstar Geographics'
+        });
+
+        // 3. Esri National Geographic Topographic Map
+        var topoLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}', {
+            maxZoom: 16,
+            attribution: 'Tiles &copy; National Geographic, Esri'
+        });
+
+        // Base Layer Catalog
+        var baseMaps = {
+            "🗺️ Street & River Network (Esri)": streetLayer,
+            "🛰️ Spaceborne Satellite (Esri)": satelliteLayer,
+            "⛰️ Topographic Elevation (Esri)": topoLayer
+        };
+
+        var userApiKey = "9e6a7dfe-dee5-4113-b625-a11cbc47435f".trim();
+        if (userApiKey) {
+            // Stadia / CARTO Smooth Basemap
+            var stadiaSmooth = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{y}/{x}{r}.png?api_key=' + userApiKey, {
+                maxZoom: 20,
+                attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a>'
+            });
+            // Stadia / CARTO Dark Matter Basemap
+            var stadiaDark = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{y}/{x}{r}.png?api_key=' + userApiKey, {
+                maxZoom: 20,
+                attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a>'
+            });
+            // CARTO Voyager Basemap
+            var cartoVoyager = L.tileLayer('https://tiles.stadiamaps.com/tiles/carto_voyager/{z}/{y}/{x}{r}.png?api_key=' + userApiKey, {
+                maxZoom: 20,
+                attribution: '&copy; CARTO, &copy; Stadia Maps'
+            });
+
+            baseMaps["🧭 CARTO / Stadia Smooth"] = stadiaSmooth;
+            baseMaps["🌃 CARTO / Stadia Dark"] = stadiaDark;
+            baseMaps["🗺️ CARTO Voyager"] = cartoVoyager;
+
+            // Set CARTO as the default layer when authenticated key is present
+            stadiaSmooth.addTo(map);
+        } else {
+            // Fallback: Default to unwatermarked Esri World Street layer
+            streetLayer.addTo(map);
+        }
+
+        // Layer Switcher Control (Top Right)
+        L.control.layers(baseMaps).addTo(map);
+
+        // Station Hazard Origin Marker
+        var stationMarker = L.marker([15.2993, 74.0]).addTo(map)
+            .bindPopup("<b>Goa [HAZARD ORIGIN]</b><br>River: South Goa River Drainage Basin<br>Status: CONFIRMED_FLOOD_DISASTER<br>Risk Score: 0.950")
+            .openPopup();
+
+        // Inundation Zone Perimeter
+        var floodCircle = L.circle([15.2993, 74.0], {
+            color: '#dc2626',
+            fillColor: '#dc2626',
+            fillOpacity: 0.35,
+            radius: 4500
+        }).addTo(map).bindPopup("<b>Projected Inundation Hazard Perimeter</b><br>Radius: 4500 meters<br>Severity: CRITICAL");
+
+        // Dynamic Shelter Network & Evacuation Corridors
+        var isDiverted = true;
+
+        if (isDiverted) {
+            // 1. Shelter A: COMPROMISED & INUNDATED
+            var shelterAMarker = L.circleMarker([15.3073, 74.006], {
+                color: '#dc2626',
+                fillColor: '#b91c1c',
+                fillOpacity: 0.9,
+                radius: 11,
+                weight: 3
+            }).addTo(map).bindPopup("<b style='color:#dc2626;'>⚠️ SHELTER A: COMPROMISED & FLOODED</b><br><b>South Goa Ward Primary School & Relief Center</b><br>Status: INUNDATION CUTOFF DETECTED<br>Reason: Flood perimeter expanded across access road.<br><b style='color:#dc2626;'>ACTION: DO NOT PROCEED HERE! DIVERT TO SHELTER B!</b>");
+
+            // 2. Aborted / Inundated Corridor (Red Dashed)
+            var abortedRoute = L.polyline([[15.2993, 74.0], [15.3023, 74.002], [15.3053, 74.004], [15.3073, 74.006]], {
+                color: '#dc2626',
+                weight: 4,
+                dashArray: '6, 8',
+                opacity: 0.85
+            }).addTo(map).bindPopup("<b style='color:#dc2626;'>❌ ABORTED EVACUATION CORRIDOR</b><br>Road submerged under flood surge. Unsafe for civilian transit.");
+
+            // 3. Shelter B: ACTIVE REAL PHYSICAL STADIUM SAFE HAVEN
+            var shelterBMarker = L.circleMarker([15.2912, 73.9744], {
+                color: '#10b981',
+                fillColor: '#059669',
+                fillOpacity: 0.95,
+                radius: 14,
+                weight: 3
+            }).addTo(map).bindPopup("<b style='color:#10b981;'>🟢 VERIFIED PHYSICAL STADIUM (PRIMARY SAFE HAVEN)</b><br><b>Fatorda Stadium (Jawaharlal Nehru Stadium, Goa)</b><br><b>Ground Truth:</b> Real Physical Stadium / Sports Complex<br><b>Elevation:</b> 26.0m (+19.0m above riverbed)<br><b>Capacity:</b> 19,000 evacuees<br><b>Structure:</b> Elevated Multi-Tier Grandstands & High Plinth<br><b>Status:</b> ACTIVE & SAFE TO OCCUPY");
+
+            // 4. Diverted High-Ground Safe Route (Bright Solid Green leading to real stadium)
+            var safeRoute = L.polyline([[15.2993, 74.0], [15.29663, 73.99155], [15.29395, 73.9831], [15.2912, 73.9744]], {
+                color: '#10b981',
+                weight: 6,
+                opacity: 0.95
+            }).addTo(map).bindPopup("<b style='color:#10b981;'>✅ DESIGNATED SAFE EVACUATION CORRIDOR TO STADIUM</b><br>High-ground route leading directly to <b>Fatorda Stadium (Jawaharlal Nehru Stadium, Goa)</b> away from river inundation.");
+
+        } else {
+            // Shelter A: ACTIVE & SAFE
+            var shelterAMarker = L.circleMarker([15.3073, 74.006], {
+                color: '#10b981',
+                fillColor: '#059669',
+                fillOpacity: 0.95,
+                radius: 12,
+                weight: 3
+            }).addTo(map).bindPopup("<b style='color:#10b981;'>🟢 PRIMARY SAFE SHELTER</b><br><b>South Goa Ward Primary School & Relief Center</b><br>Elevation: 9.0m (+2.0m)<br>Status: ACTIVE & VERIFIED SAFE");
+
+            var safeRoute = L.polyline([[15.2993, 74.0], [15.29663, 73.99155], [15.29395, 73.9831], [15.2912, 73.9744]], {
+                color: '#10b981',
+                weight: 5,
+                dashArray: '10, 10',
+                opacity: 0.9
+            }).addTo(map).bindPopup("<b>Designated Safe Evacuation Corridor</b><br>Priority: Green Line to Higher Elevation");
+
+            // Standby Shelter B
+            var shelterBMarker = L.circleMarker([15.2912, 73.9744], {
+                color: '#3b82f6',
+                fillColor: '#1d4ed8',
+                fillOpacity: 0.7,
+                radius: 9,
+                weight: 2
+            }).addTo(map).bindPopup("<b>🔵 SHELTER B: STANDBY HIGH-GROUND RESERVE</b><br><b>Fatorda Stadium (Jawaharlal Nehru Stadium, Goa)</b>");
+        }
+
+        // Shelter C: Apex Highland Citadel (Reserve)
+        var shelterCMarker = L.circleMarker([15.2613, 74.025], {
+            color: '#6366f1',
+            fillColor: '#4338ca',
+            fillOpacity: 0.65,
+            radius: 8,
+            weight: 2
+        }).addTo(map).bindPopup("<b>🟣 SHELTER C: APEX CITADEL RESERVE</b><br><b>South Goa Regional Highland Civil Defense Citadel</b><br>Elevation: 52.0m (+45.0m)");
+    </script>
+</body>
+</html>

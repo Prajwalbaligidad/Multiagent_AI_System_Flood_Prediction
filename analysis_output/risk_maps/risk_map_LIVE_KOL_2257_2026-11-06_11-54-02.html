@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disaster Risk & Dynamic Evacuation Map - Kolkata</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <style>
+        body { margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #0f172a; color: #f8fafc; }
+        #header { background: #1e293b; padding: 14px 24px; border-bottom: 2px solid #334155; display: flex; justify-content: space-between; align-items: center; }
+        #header h1 { margin: 0; font-size: 20px; color: #38bdf8; }
+        .badge-container { display: flex; gap: 10px; }
+        .badge { padding: 6px 14px; border-radius: 9999px; font-weight: bold; font-size: 13px; letter-spacing: 0.5px; }
+        #risk-badge { background: #16a34a; color: white; }
+        #evac-badge { background: #16a34a; color: white; }
+        #map { height: calc(100vh - 140px); width: 100%; }
+        #info-panel { background: #1e293b; padding: 12px 24px; font-size: 13px; color: #cbd5e1; display: flex; gap: 24px; border-top: 1px solid #334155; flex-wrap: wrap; }
+        .badge-tag { font-weight: bold; color: #f8fafc; }
+    </style>
+</head>
+<body>
+    <div id="header">
+        <div>
+            <h1>DYNAMIC RISK & EVACUATION SAFETY MAP &bull; KOLKATA</h1>
+            <small style="color: #94a3b8;">River Kolkata River Drainage Basin Basin &bull; District: Kolkata &bull; Timestamp: 2026-11-06 11:54:02</small>
+        </div>
+        <div class="badge-container">
+            <div id="risk-badge" class="badge">LOW RISK (5%)</div>
+            <div id="evac-badge" class="badge">STATUS: NORMAL & SECURE (NO EVACUATION REQUIRED)</div>
+        </div>
+    </div>
+    <div id="map"></div>
+    <div id="info-panel">
+        <div><span class="badge-tag">Lead Time:</span> NO FLOOD THREAT ANTICIPATED OVER NEXT 48 HOURS</div>
+        <div><span class="badge-tag">Evacuation Allocation:</span> None Required (Area is Safe & Secure)</div>
+        <div><span class="badge-tag">Re-Assessment Directive:</span> ✅ ALL CLEAR: All river levels and drainage channels in Kolkata are nominal. Routine condit...</div>
+    </div>
+    <script>
+        var map = L.map('map').setView([22.5726, 88.3639], 13);
+
+        // 100% Free Public Map Tile Servers (NO API KEY required, NO watermark)
+        // 1. Esri World Street & Hydrology Map
+        var streetLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+            maxZoom: 19,
+            attribution: 'Tiles &copy; Esri, DeLorme, NAVTEQ | Autonomous Multi-Agent AI System'
+        });
+
+        // 2. Esri High-Resolution World Satellite Imagery
+        var satelliteLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+            maxZoom: 19,
+            attribution: 'Tiles &copy; Esri, DigitalGlobe, GeoEye, Earthstar Geographics'
+        });
+
+        // 3. Esri National Geographic Topographic Map
+        var topoLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}', {
+            maxZoom: 16,
+            attribution: 'Tiles &copy; National Geographic, Esri'
+        });
+
+        // Base Layer Catalog
+        var baseMaps = {
+            "🗺️ Street & River Network (Esri)": streetLayer,
+            "🛰️ Spaceborne Satellite (Esri)": satelliteLayer,
+            "⛰️ Topographic Elevation (Esri)": topoLayer
+        };
+
+        var userApiKey = "9e6a7dfe-dee5-4113-b625-a11cbc47435f".trim();
+        if (userApiKey) {
+            var stadiaSmooth = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{y}/{x}{r}.png?api_key=' + userApiKey, {
+                maxZoom: 20,
+                attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a>'
+            });
+            var stadiaDark = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{y}/{x}{r}.png?api_key=' + userApiKey, {
+                maxZoom: 20,
+                attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a>'
+            });
+            var cartoVoyager = L.tileLayer('https://tiles.stadiamaps.com/tiles/carto_voyager/{z}/{y}/{x}{r}.png?api_key=' + userApiKey, {
+                maxZoom: 20,
+                attribution: '&copy; CARTO, &copy; Stadia Maps'
+            });
+
+            baseMaps["🧭 CARTO / Stadia Smooth"] = stadiaSmooth;
+            baseMaps["🌃 CARTO / Stadia Dark"] = stadiaDark;
+            baseMaps["🗺️ CARTO Voyager"] = cartoVoyager;
+            stadiaSmooth.addTo(map);
+        } else {
+            streetLayer.addTo(map);
+        }
+
+        // Layer Switcher Control (Top Right)
+        L.control.layers(baseMaps).addTo(map);
+
+        // Station Hazard Origin Marker
+        var stationMarker = L.marker([22.5726, 88.3639]).addTo(map)
+            .bindPopup("<b>Kolkata [MONITORING NODE]</b><br>River: Kolkata River Drainage Basin<br>Status: NO_FLOOD_NORMAL_CONDITIONS<br>Risk Score: 0.050")
+            .openPopup();
+
+        // Area Risk Perimeter Circle
+        var areaCircle = L.circle([22.5726, 88.3639], {
+            color: '#16a34a',
+            fillColor: '#16a34a',
+            fillOpacity: 0.30,
+            radius: 500
+        }).addTo(map).bindPopup("<b>🟢 SAFE ZONE: ROUTINE MONITORING</b><br>Radius: 500 meters<br>Severity: LOW");
+
+        
+        // [LOW RISK / NOT CRITICAL]
+        // Condition satisfied: Safe baseline monitoring. NO evacuation shelters or routes allocated.
+        console.log("Area is safe (LOW risk). No evacuation allocated.");
+        
+    </script>
+</body>
+</html>

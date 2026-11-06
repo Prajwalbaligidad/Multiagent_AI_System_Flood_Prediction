@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disaster Risk Map - Guwahati_AWRMI</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <style>
+        body { margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #0f172a; color: #f8fafc; }
+        #header { background: #1e293b; padding: 14px 24px; border-bottom: 2px solid #334155; display: flex; justify-content: space-between; align-items: center; }
+        #header h1 { margin: 0; font-size: 20px; color: #38bdf8; }
+        #badge { background: #dc2626; color: white; padding: 6px 14px; border-radius: 9999px; font-weight: bold; font-size: 13px; letter-spacing: 0.5px; }
+        #map { height: calc(100vh - 140px); width: 100%; }
+        #info-panel { background: #1e293b; padding: 12px 24px; font-size: 13px; color: #cbd5e1; display: flex; gap: 24px; border-top: 1px solid #334155; }
+        .badge-tag { font-weight: bold; color: #f8fafc; }
+    </style>
+</head>
+<body>
+    <div id="header">
+        <div>
+            <h1>SPATIAL DISASTER RISK MAP &bull; GUWAHATI_AWRMI</h1>
+            <small style="color: #94a3b8;">River Brahmaputra Basin &bull; District: Kamrup Metropolitan &bull; Timestamp: 2026-11-03 12:00:00</small>
+        </div>
+        <div id="badge">CRITICAL RISK (95%)</div>
+    </div>
+    <div id="map"></div>
+    <div id="info-panel">
+        <div><span class="badge-tag">Lead Time:</span> IMMEDIATE (< 2 Hours) — ACTIVE DELUGE / INUNDATION</div>
+        <div><span class="badge-tag">Primary Driver:</span> PHYSICAL_RIVER_DANGER_BREACH</div>
+        <div><span class="badge-tag">Vulnerable Zones:</span> Bharalumukh Sluice Gate Basin & Outfall, Anil Nagar & Nabin Nagar Low-Lying Urban Wards</div>
+    </div>
+    <script>
+        var map = L.map('map').setView([26.1445, 91.7362], 13);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 18,
+            attribution: '&copy; OpenStreetMap contributors | Autonomous Multi-Agent AI System'
+        }).addTo(map);
+
+        // Station Marker
+        var stationMarker = L.marker([26.1445, 91.7362]).addTo(map)
+            .bindPopup("<b>Guwahati_AWRMI</b><br>River: Brahmaputra<br>Status: CONFIRMED_FLOOD_DISASTER<br>Risk Score: 0.950")
+            .openPopup();
+
+        // Inundation Zone Perimeter
+        var floodCircle = L.circle([26.1445, 91.7362], {
+            color: '#dc2626',
+            fillColor: '#dc2626',
+            fillOpacity: 0.35,
+            radius: 4500
+        }).addTo(map).bindPopup("<b>Projected Inundation Hazard Perimeter</b><br>Radius: 4500 meters<br>Severity: CRITICAL");
+
+        // Elevated Safe Shelter Marker
+        var shelterMarker = L.marker([26.1695, 91.75619999999999]).addTo(map)
+            .bindPopup("<b>Designated Elevated Relief Shelter</b><br>Status: ACTIVE & STOCKED<br>Capacity: 1,500 evacuees");
+
+        // Evacuation Route Line
+        var evacRoute = L.polyline([
+            [26.1445, 91.7362],
+            [26.154500000000002, 91.74419999999999],
+            [26.1625, 91.7512],
+            [26.1695, 91.75619999999999]
+        ], {
+            color: '#10b981',
+            weight: 5,
+            dashArray: '10, 10',
+            opacity: 0.9
+        }).addTo(map).bindPopup("<b>Designated Safe Evacuation Corridor</b><br>Priority: Green Line to Higher Elevation");
+    </script>
+</body>
+</html>

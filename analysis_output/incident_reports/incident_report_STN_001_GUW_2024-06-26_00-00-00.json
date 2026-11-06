@@ -1,0 +1,91 @@
+{
+  "report_metadata": {
+    "report_id": "IAP-ASSESS_STN_001_GUW_2024-06-26_00-00-00",
+    "generated_at": "2026-11-06T11:56:50.587772",
+    "station_name": "Guwahati_AWRMI",
+    "district": "Kamrup Metropolitan",
+    "river": "Brahmaputra",
+    "timestamp": "2024-06-26 00:00:00"
+  },
+  "risk_assessment": {
+    "assessment_id": "ASSESS_STN_001_GUW_2024-06-26_00-00-00",
+    "station_id": "STN_001_GUW",
+    "station_name": "Guwahati_AWRMI",
+    "district": "Kamrup Metropolitan",
+    "river_name": "Brahmaputra",
+    "timestamp": "2024-06-26 00:00:00",
+    "composite_risk_score": 0.432,
+    "composite_confidence": 0.92,
+    "primary_hazard_driver": "DOMINANT_SATELLITE_ELEVATION",
+    "hard_safety_override_triggered": false,
+    "flood_occurrence_confirmed": false,
+    "flood_event_status": "ELEVATED_WATCH_ADVISORY",
+    "flood_probability_pct": 43.2,
+    "overall_severity_tier": "MODERATE",
+    "estimated_lead_time": "12 TO 24 HOURS -- POTENTIAL SURGE IF PRECIPITATION PERSISTS",
+    "identified_vulnerable_locations": [
+      "Bharalumukh Sluice Gate Basin & Outfall",
+      "Anil Nagar & Nabin Nagar Low-Lying Urban Wards"
+    ],
+    "headline_verdict": "ELEVATED FLOOD WATCH: River Brahmaputra is rising; drainage networks under pressure.",
+    "chain_of_thought_reasoning": "1. METEOROLOGICAL ANALYSIS: Substantial monsoon rainfall (6.0 mm/h, 24h: 78.7 mm) creating rapid catchment moisture buildup.\n2. HYDRAULIC & RIVERINE STAGE: River water level (46.534 m) is safely 3.97 m below Danger Level (50.50 m).\n3. TOPOGRAPHIC RUNOFF BEHAVIOR: Catchment terrain has low permeability (Silty Clay Loam, runoff coefficient 0.78, TWI 12.2), accelerating overland surge directly into drainage networks (choke ratio: 44%).\n4. SPACEBORNE OBSERVATION: Clear sky condition (20% cloud); optical NDWI (0.236) and SAR radar (-20.1 dB) corroborate surface water extent.\n5. CROSS-DOMAIN SYNTHESIS: Multi-agent consensus weighted score evaluates to 0.432 with 92.2% sensor certainty. Conclusion: ELEVATED FLOOD WATCH: River Brahmaputra is rising; drainage networks under pressure.",
+    "weather_risk": 0.646,
+    "flood_risk": 0.05,
+    "terrain_risk": 0.6,
+    "satellite_risk": 0.653,
+    "specialist_flags": [
+      "SIGNIFICANT_FLOOD_SPREAD",
+      "ELEVATED_SURFACE_MOISTURE_SIGNATURE",
+      "HIGH_RUNOFF_IMPERVIOUS_SURFACE",
+      "SAR_SPECULAR_FLOOD_SIGNATURE"
+    ],
+    "inter_agent_messages_count": 1
+  },
+  "decision_and_early_warning": {
+    "alert_code": "YELLOW_ELEVATED_WATCH_ADVISORY",
+    "alert_level_display": "YELLOW (LEVEL 1 - ELEVATED READINESS & MONITORING)",
+    "siren_command": "STANDBY_NO_SIREN_DISPATCH",
+    "public_broadcast_sms": "[YELLOW FLOOD ADVISORY] Elevated water levels and drainage pressure in Kamrup Metropolitan. Nearest designated evacuation spot: Kamrup Metropolitan Local Community Relief Center & Civic Hall (1.0 km). Safe transit corridors are open. Low-lying area residents monitor local bulletins.",
+    "recommended_tactical_actions": [
+      {
+        "priority": "P1_TACTICAL (1-3 Hours)",
+        "category": "TELEMETRY AUDIT",
+        "action": "Increase ultrasonic gauge and rain sensor sampling rate from 60 minutes to 15 minutes.",
+        "designated_agency": "Central Water Commission (CWC) / IMD"
+      },
+      {
+        "priority": "P2_SUSTAINED (3-6 Hours)",
+        "category": "DRAIN CLEARANCE",
+        "action": "Clear solid waste choke points and debris from primary municipal stormwater grates.",
+        "designated_agency": "Municipal Solid Waste Management"
+      }
+    ],
+    "human_approval_checklist": [
+      {
+        "item_id": "CHK_01_EVACUATION",
+        "checkpoint": "District Magistrate / Incident Commander Authorization for Evacuation in Kamrup Metropolitan",
+        "status": "NOT_REQUIRED",
+        "sign_off_authority": "Deputy Commissioner / District Magistrate"
+      },
+      {
+        "item_id": "CHK_02_NDRF_MOBILIZATION",
+        "checkpoint": "NDRF / SDRF Unit Deployment Requisition Authorization",
+        "status": "STANDBY",
+        "sign_off_authority": "Superintendent of Police & DDMA Coordinator"
+      },
+      {
+        "item_id": "CHK_03_SLUICE_GATES",
+        "checkpoint": "Hydraulic Sluice Gate Closure & Embankment Barrier Lock Authorization on Brahmaputra",
+        "status": "MONITORING",
+        "sign_off_authority": "Chief Engineer, Water Resources Department"
+      },
+      {
+        "item_id": "CHK_04_PUBLIC_BROADCAST",
+        "checkpoint": "Dissemination of Emergency SMS Cell-Broadcast & Media Sirens",
+        "status": "NOT_REQUIRED",
+        "sign_off_authority": "Public Relations Officer & DDMA Control Room"
+      }
+    ],
+    "incident_commander_guidance": "EXECUTION DIRECTIVE FOR KAMRUP METROPOLITAN INCIDENT COMMAND: Current posture is set to YELLOW_ELEVATED_WATCH_ADVISORY. Maintain heightened surveillance and verify all drainage choke points."
+  }
+}

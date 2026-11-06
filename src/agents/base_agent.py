@@ -132,6 +132,18 @@ class BaseAutonomousAIAgent(ABC):
             return None
 
         row = {}
+        # Ensure relative hydrologic features are derived if not explicitly present
+        wl = float(obs.get("water_level_m", 0.0))
+        dl = float(obs.get("danger_level_m", 50.0))
+        wl_warn = float(obs.get("warning_level_m", dl - 1.0))
+        
+        if "stage_ratio" not in obs and dl > 0:
+            obs["stage_ratio"] = round(wl / dl, 4)
+        if "danger_buffer_m" not in obs:
+            obs["danger_buffer_m"] = round(wl - dl, 3)
+        if "warning_buffer_m" not in obs:
+            obs["warning_buffer_m"] = round(wl - wl_warn, 3)
+
         for feat in self.ml_features:
             val = obs.get(feat, 0.0)
             if isinstance(val, bool):

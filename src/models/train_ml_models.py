@@ -70,12 +70,13 @@ def train_models():
         raise FileNotFoundError(f"Processed dataset not found: {PROCESSED_FILE}")
 
     df = pd.read_csv(PROCESSED_FILE)
+    df["stage_ratio"] = (df["water_level_m"] / df["danger_level_m"].clip(lower=1.0)).round(4)
     df = label_ground_truth(df)
 
     print(f"Dataset shape: {df.shape}")
     print(f"Target distribution:\n{df['hazard_label'].value_counts()}\n")
 
-    # Domain Feature Sets
+    # Domain Feature Sets (Relative & Geographically Invariant)
     feature_sets = {
         "weather": [
             "hourly_rainfall_mm",
@@ -88,9 +89,9 @@ def train_models():
             "relative_humidity_pct"
         ],
         "flood": [
-            "water_level_m",
             "danger_buffer_m",
             "warning_buffer_m",
+            "stage_ratio",
             "water_level_rise_1h_m",
             "water_level_rise_3h_m",
             "discharge_rate_cumecs",
@@ -100,7 +101,6 @@ def train_models():
         ],
         "terrain": [
             "slope_deg",
-            "elevation_m",
             "infiltration_capacity_mmh",
             "runoff_coefficient",
             "topographic_wetness_index",

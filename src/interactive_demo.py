@@ -1,6 +1,7 @@
 """
 Interactive Runtime Evaluator for Autonomous Multi-Agent Flood System
-Enables live real-time input from evaluators/professors to test custom disaster scenarios.
+Enables live real-time input from evaluators/professors to test custom disaster scenarios
+across all 5 layers: Specialists -> Blackboard -> Fusion Agent -> Decision & Early Warning Agent.
 """
 
 import sys
@@ -16,87 +17,12 @@ from src.agents import (
     FloodAgent,
     TerrainAgent,
     SatelliteAgent,
-    MESSAGE_BUS
+    RiskAssessmentFusionAgent,
+    DecisionEarlyWarningAgent,
+    MESSAGE_BUS,
+    STATION_PROFILES,
+    get_station_profile
 )
-
-# Station Geomorphic & Threshold Profiles
-STATION_PROFILES = {
-    "1": {
-        "station_id": "STN_001_GUW",
-        "station_name": "Guwahati_AWRMI",
-        "district": "Kamrup Metropolitan",
-        "river_name": "Brahmaputra",
-        "warning_level_m": 49.68,
-        "danger_level_m": 50.50,
-        "elevation_m": 55.0,
-        "slope_deg": 2.5,
-        "soil_type": "Silty Clay Loam",
-        "infiltration_capacity_mmh": 8.5,
-        "land_cover_class": "Urban / Built-up",
-        "runoff_coefficient": 0.78,
-        "topographic_wetness_index": 12.25
-    },
-    "2": {
-        "station_id": "STN_002_DHU",
-        "station_name": "Dhubri_Ghat",
-        "district": "Dhubri",
-        "river_name": "Brahmaputra",
-        "warning_level_m": 28.62,
-        "danger_level_m": 29.84,
-        "elevation_m": 28.0,
-        "slope_deg": 0.6,
-        "soil_type": "Alluvial Clay",
-        "infiltration_capacity_mmh": 4.2,
-        "land_cover_class": "Riverine Floodplain",
-        "runoff_coefficient": 0.38,
-        "topographic_wetness_index": 13.58
-    },
-    "3": {
-        "station_id": "STN_003_SIL",
-        "station_name": "Silchar_Barak",
-        "district": "Cachar",
-        "river_name": "Barak",
-        "warning_level_m": 19.83,
-        "danger_level_m": 20.85,
-        "elevation_m": 42.0,
-        "slope_deg": 1.8,
-        "soil_type": "Clayey Silt",
-        "infiltration_capacity_mmh": 6.0,
-        "land_cover_class": "Semi-Urban / Lowland",
-        "runoff_coefficient": 0.60,
-        "topographic_wetness_index": 12.74
-    },
-    "4": {
-        "station_id": "STN_004_UDA",
-        "station_name": "Udalguri_Dhansiri",
-        "district": "Udalguri",
-        "river_name": "Dhansiri (North)",
-        "warning_level_m": 68.50,
-        "danger_level_m": 69.80,
-        "elevation_m": 165.0,
-        "slope_deg": 11.5,
-        "soil_type": "Gravelly Sandy Loam",
-        "infiltration_capacity_mmh": 22.0,
-        "land_cover_class": "Foothills / Forest",
-        "runoff_coefficient": 0.42,
-        "topographic_wetness_index": 5.95
-    },
-    "5": {
-        "station_id": "STN_005_BAR",
-        "station_name": "Barpeta_Beki",
-        "district": "Barpeta",
-        "river_name": "Beki",
-        "warning_level_m": 44.10,
-        "danger_level_m": 45.10,
-        "elevation_m": 35.0,
-        "slope_deg": 0.8,
-        "soil_type": "Alluvial Loam",
-        "infiltration_capacity_mmh": 7.0,
-        "land_cover_class": "Wetlands / Cropland",
-        "runoff_coefficient": 0.32,
-        "topographic_wetness_index": 13.44
-    }
-}
 
 
 def get_float_input(prompt: str, default: float) -> float:
@@ -112,10 +38,10 @@ def get_float_input(prompt: str, default: float) -> float:
 
 def run_interactive_evaluator(custom_obs=None):
     MESSAGE_BUS.clear()
-    print("=" * 90)
+    print("=" * 95)
     print("AUTONOMOUS MULTI-AGENT FLOOD SYSTEM - LIVE RUNTIME EVALUATOR")
-    print("Input custom real-time sensor parameters to test autonomous agent deliberation")
-    print("=" * 90)
+    print("Complete 5-Layer Autonomous Architecture with LLM Risk Assessment & Decision Guidance")
+    print("=" * 95)
 
     if custom_obs is None:
         print("\nSelect a Monitoring Station:")
@@ -126,10 +52,12 @@ def run_interactive_evaluator(custom_obs=None):
         print("  [5] Barpeta_Beki     (Lowland Wetlands, Warning: 44.10m, Danger: 45.10m)")
         
         stn_choice = input("\nEnter choice [1-5] (default 1): ").strip() or "1"
-        stn = STATION_PROFILES.get(stn_choice, STATION_PROFILES["1"])
+        stn_keys = {"1": "Guwahati_AWRMI", "2": "Dhubri_Ghat", "3": "Silchar_Barak", "4": "Udalguri_Dhansiri", "5": "Barpeta_Beki"}
+        stn_key = stn_keys.get(stn_choice, "Guwahati_AWRMI")
+        stn = STATION_PROFILES[stn_key]
 
         print(f"\nEnter Live Telemetry for {stn['station_name']} (Press Enter to accept default):")
-        print("-" * 70)
+        print("-" * 75)
         
         # Suggested default baseline values
         def_rain = 15.0
@@ -158,7 +86,6 @@ def run_interactive_evaluator(custom_obs=None):
         pressure_drop = get_float_input("  * 3h Barometric Pressure Drop (hPa)", def_pressure_drop)
         gusts = get_float_input("  * Wind Gusts (km/h)", def_gusts)
 
-        # Assemble full observation vector
         obs = {
             "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
             "station_id": stn["station_id"],
@@ -203,19 +130,22 @@ def run_interactive_evaluator(custom_obs=None):
         }
     else:
         obs = custom_obs
+        stn = get_station_profile(obs.get("station_name", "Guwahati_AWRMI"))
 
-    print("\n" + "=" * 90)
+    print("\n" + "=" * 95)
     print(f"RUNNING AGENT DELIBERATION FOR: {obs['station_name']} | Time: {obs['timestamp']}")
     print(f"Inputs: Rain={obs['hourly_rainfall_mm']} mm/h | River Level={obs['water_level_m']}m (Danger: {obs['danger_level_m']}m) | NDWI={obs['ndwi_index']} | Cloud={obs['satellite_cloud_cover_pct']}%")
-    print("=" * 90)
+    print("=" * 95)
 
-    # Instantiate the 4 Autonomous AI Agents
+    # 1. Instantiate the 4 Autonomous AI Agents
     weather_agent = WeatherAgent()
     flood_agent = FloodAgent()
     terrain_agent = TerrainAgent()
     satellite_agent = SatelliteAgent()
+    fusion_agent = RiskAssessmentFusionAgent()
+    decision_agent = DecisionEarlyWarningAgent()
 
-    # Execute Autonomous Agent Loop
+    # 2. Execute Specialist Loops
     w_packet = weather_agent.run_agent_cycle(obs, MESSAGE_BUS)
     t_packet = terrain_agent.run_agent_cycle(obs, MESSAGE_BUS)
     f_packet = flood_agent.run_agent_cycle(obs, MESSAGE_BUS)
@@ -223,11 +153,11 @@ def run_interactive_evaluator(custom_obs=None):
 
     packets = [w_packet, f_packet, t_packet, s_packet]
 
+    print("\n--- [LAYER 3: 4 SPECIALIST AGENT DECISIONS] ---")
     for p in packets:
         flags_str = ", ".join(p.critical_flags) if p.critical_flags else "None"
-        print(f"\n  +-- [{p.agent_type} AGENT] ({p.operational_state})")
-        print(f"  |   * risk_score:     {p.risk_score:.3f} ({p.risk_level})")
-        print(f"  |   * confidence:     {p.confidence:.2f} ({int(p.confidence * 100)}%)")
+        print(f"  +-- [{p.agent_type} AGENT] ({p.operational_state})")
+        print(f"  |   * risk_score:     {p.risk_score:.3f} ({p.risk_level}) | confidence: {int(p.confidence * 100)}%")
         print(f"  |   * critical_flags: {flags_str}")
         print(f"  |   * action_trigger: {p.action_trigger}")
         if p.active_intentions:
@@ -240,11 +170,58 @@ def run_interactive_evaluator(custom_obs=None):
         for msg in MESSAGE_BUS.message_history:
             print(f"     * [{msg.sender_agent} -> {msg.recipient_agent}] {msg.performative}: {msg.subject}")
 
-    print("\n" + "=" * 90)
-    print("LIVE EVALUATION COMPLETE - 100% LOCAL REAL-TIME INFERENCE")
-    print("=" * 90)
+    # 3. Layer 4: Risk Assessment and Fusion Agent
+    print("\n--- [LAYER 4: RISK ASSESSMENT & FUSION AGENT (LLM ENGINE)] ---")
+    fused_assessment = fusion_agent.fuse_and_assess(
+        station_profile=stn,
+        weather_packet=w_packet,
+        flood_packet=f_packet,
+        terrain_packet=t_packet,
+        satellite_packet=s_packet,
+        bus=MESSAGE_BUS
+    )
 
-    return packets
+    confirm_badge = "[YES - CONFIRMED FLOOD EVENT]" if fused_assessment.flood_occurrence_confirmed else "[NO - BELOW FLOOD CRITERIA]"
+    print(f"  * FLOOD OCCURRENCE CONFIRMED?   {confirm_badge}")
+    print(f"  * Flood Event Status:          {fused_assessment.flood_event_status}")
+    print(f"  * Flood Probability:           {fused_assessment.flood_probability_pct:.1f}%")
+    print(f"  * Overall Severity Tier:       {fused_assessment.overall_severity_tier} (Risk Score: {fused_assessment.composite_risk_score:.3f})")
+    print(f"  * Estimated Lead Time:         {fused_assessment.estimated_lead_time}")
+    print(f"  * Primary Hazard Driver:       {fused_assessment.primary_hazard_driver}")
+    print(f"  * Identified Vulnerable Zones: {', '.join(fused_assessment.identified_vulnerable_locations[:3])}")
+    print(f"  * Headline Verdict:            \"{fused_assessment.headline_verdict}\"")
+
+    # 4. Layer 5: Decision and Early Warning Agent
+    print("\n--- [LAYER 5: DECISION & EARLY WARNING AGENT] ---")
+    decision_packet = decision_agent.process_decision_cycle(
+        assessment=fused_assessment,
+        station_profile=stn
+    )
+
+    print(f"  * ALERT DISPATCH:              {decision_packet.alert_level_display}")
+    print(f"  * SIREN COMMAND:               {decision_packet.siren_command}")
+    print(f"  * PUBLIC BROADCAST SMS:        \"{decision_packet.public_broadcast_sms}\"")
+    print("\n  * TOP RECOMMENDED TACTICAL ACTIONS:")
+    for act in decision_packet.recommended_tactical_actions[:3]:
+        print(f"    - [{act['priority']}] {act['action']} ({act['designated_agency']})")
+
+    print("\n  * SPATIAL RISK MAP:")
+    print(decision_packet.ascii_risk_map)
+
+    print(f"\n  * GENERATED DECISION ARTIFACTS:")
+    print(f"    - Interactive HTML Risk Map: file:///{decision_packet.html_risk_map_path.replace('\\', '/')}")
+    print(f"    - Human Approval Report (MD): file:///{decision_packet.incident_report_md_path.replace('\\', '/')}")
+    print(f"    - Machine-Readable Plan (JSON): file:///{decision_packet.incident_report_json_path.replace('\\', '/')}")
+
+    print("\n" + "=" * 95)
+    print("LIVE RUNTIME EVALUATION COMPLETE - 100% OFFLINE ZERO API TOKENS")
+    print("=" * 95)
+
+    return {
+        "specialists": packets,
+        "fused_assessment": fused_assessment,
+        "decision_packet": decision_packet
+    }
 
 
 if __name__ == "__main__":

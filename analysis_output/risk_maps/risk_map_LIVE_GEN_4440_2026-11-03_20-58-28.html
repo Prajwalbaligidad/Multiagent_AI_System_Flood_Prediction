@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disaster Risk & Dynamic Evacuation Map - Genoa</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <style>
+        body { margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #0f172a; color: #f8fafc; }
+        #header { background: #1e293b; padding: 14px 24px; border-bottom: 2px solid #334155; display: flex; justify-content: space-between; align-items: center; }
+        #header h1 { margin: 0; font-size: 20px; color: #38bdf8; }
+        .badge-container { display: flex; gap: 10px; }
+        .badge { padding: 6px 14px; border-radius: 9999px; font-weight: bold; font-size: 13px; letter-spacing: 0.5px; }
+        #risk-badge { background: #ca8a04; color: white; }
+        #evac-badge { background: #16a34a; color: white; }
+        #map { height: calc(100vh - 140px); width: 100%; }
+        #info-panel { background: #1e293b; padding: 12px 24px; font-size: 13px; color: #cbd5e1; display: flex; gap: 24px; border-top: 1px solid #334155; flex-wrap: wrap; }
+        .badge-tag { font-weight: bold; color: #f8fafc; }
+    </style>
+</head>
+<body>
+    <div id="header">
+        <div>
+            <h1>DYNAMIC RISK & EVACUATION SAFETY MAP &bull; GENOA</h1>
+            <small style="color: #94a3b8;">River Province of Genoa River Drainage Basin Basin &bull; District: Province of Genoa &bull; Timestamp: 2026-11-03 20:58:28</small>
+        </div>
+        <div class="badge-container">
+            <div id="risk-badge" class="badge">MODERATE RISK (26%)</div>
+            <div id="evac-badge" class="badge">EVACUATION STATUS: ✅ CORRIDOR TO SHELTER A VERIFIED SAFE</div>
+        </div>
+    </div>
+    <div id="map"></div>
+    <div id="info-panel">
+        <div><span class="badge-tag">Lead Time:</span> 12 TO 24 HOURS -- POTENTIAL SURGE IF PRECIPITATION PERSISTS</div>
+        <div><span class="badge-tag">Active Safe Refuge:</span> Province of Genoa North Municipal High School & Relief Camp (+12.0m elevated)</div>
+        <div><span class="badge-tag">Re-Assessment Directive:</span> [ALL CLEAR]: Evacuation Corridor to Primary Shelter (Province of Genoa North Municipal Hig...</div>
+    </div>
+    <script>
+        var map = L.map('map').setView([44.40478, 8.94439], 13);
+
+        // 100% Free Public Map Tile Servers (NO API KEY required, NO watermark)
+        // 1. Esri World Street & Hydrology Map
+        var streetLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+            maxZoom: 19,
+            attribution: 'Tiles &copy; Esri, DeLorme, NAVTEQ | Autonomous Multi-Agent AI System'
+        });
+
+        // 2. Esri High-Resolution World Satellite Imagery
+        var satelliteLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+            maxZoom: 19,
+            attribution: 'Tiles &copy; Esri, DigitalGlobe, GeoEye, Earthstar Geographics'
+        });
+
+        // 3. Esri National Geographic Topographic Map
+        var topoLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}', {
+            maxZoom: 16,
+            attribution: 'Tiles &copy; National Geographic, Esri'
+        });
+
+        // Base Layer Catalog
+        var baseMaps = {
+            "🗺️ Street & River Network (Esri)": streetLayer,
+            "🛰️ Spaceborne Satellite (Esri)": satelliteLayer,
+            "⛰️ Topographic Elevation (Esri)": topoLayer
+        };
+
+        var userApiKey = "9e6a7dfe-dee5-4113-b625-a11cbc47435f".trim();
+        if (userApiKey) {
+            // Stadia / CARTO Smooth Basemap
+            var stadiaSmooth = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{y}/{x}{r}.png?api_key=' + userApiKey, {
+                maxZoom: 20,
+                attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a>'
+            });
+            // Stadia / CARTO Dark Matter Basemap
+            var stadiaDark = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{y}/{x}{r}.png?api_key=' + userApiKey, {
+                maxZoom: 20,
+                attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a>'
+            });
+            // CARTO Voyager Basemap
+            var cartoVoyager = L.tileLayer('https://tiles.stadiamaps.com/tiles/carto_voyager/{z}/{y}/{x}{r}.png?api_key=' + userApiKey, {
+                maxZoom: 20,
+                attribution: '&copy; CARTO, &copy; Stadia Maps'
+            });
+
+            baseMaps["🧭 CARTO / Stadia Smooth"] = stadiaSmooth;
+            baseMaps["🌃 CARTO / Stadia Dark"] = stadiaDark;
+            baseMaps["🗺️ CARTO Voyager"] = cartoVoyager;
+
+            // Set CARTO as the default layer when authenticated key is present
+            stadiaSmooth.addTo(map);
+        } else {
+            // Fallback: Default to unwatermarked Esri World Street layer
+            streetLayer.addTo(map);
+        }
+
+        // Layer Switcher Control (Top Right)
+        L.control.layers(baseMaps).addTo(map);
+
+        // Station Hazard Origin Marker
+        var stationMarker = L.marker([44.40478, 8.94439]).addTo(map)
+            .bindPopup("<b>Genoa [HAZARD ORIGIN]</b><br>River: Province of Genoa River Drainage Basin<br>Status: ELEVATED_WATCH_ADVISORY<br>Risk Score: 0.268")
+            .openPopup();
+
+        // Inundation Zone Perimeter
+        var floodCircle = L.circle([44.40478, 8.94439], {
+            color: '#ca8a04',
+            fillColor: '#ca8a04',
+            fillOpacity: 0.35,
+            radius: 1200
+        }).addTo(map).bindPopup("<b>Projected Inundation Hazard Perimeter</b><br>Radius: 1200 meters<br>Severity: MODERATE");
+
+        // Dynamic Shelter Network & Evacuation Corridors
+        var isDiverted = false;
+
+        if (isDiverted) {
+            // 1. Shelter A: COMPROMISED & INUNDATED
+            var shelterAMarker = L.circleMarker([44.41678, 8.95439], {
+                color: '#dc2626',
+                fillColor: '#b91c1c',
+                fillOpacity: 0.9,
+                radius: 11,
+                weight: 3
+            }).addTo(map).bindPopup("<b style='color:#dc2626;'>⚠️ SHELTER A: COMPROMISED & FLOODED</b><br><b>Province of Genoa North Municipal High School & Relief Camp</b><br>Status: INUNDATION CUTOFF DETECTED<br>Reason: Flood perimeter expanded across access road.<br><b style='color:#dc2626;'>ACTION: DO NOT PROCEED HERE! DIVERT TO SHELTER B!</b>");
+
+            // 2. Aborted / Inundated Corridor (Red Dashed)
+            var abortedRoute = L.polyline([], {
+                color: '#dc2626',
+                weight: 4,
+                dashArray: '6, 8',
+                opacity: 0.85
+            }).addTo(map).bindPopup("<b style='color:#dc2626;'>❌ ABORTED EVACUATION CORRIDOR</b><br>Road submerged under flood surge. Unsafe for civilian transit.");
+
+            // 3. Shelter B: ACTIVE SAFE HIGH-GROUND REFUGE
+            var shelterBMarker = L.circleMarker([44.42878, 8.92839], {
+                color: '#10b981',
+                fillColor: '#059669',
+                fillOpacity: 0.95,
+                radius: 13,
+                weight: 3
+            }).addTo(map).bindPopup("<b style='color:#10b981;'>🟢 SHELTER B: ACTIVE SAFE REFUGE</b><br><b>Province of Genoa Central Elevated Sports Stadium & Highland Ridge</b><br>Elevation: 50.0m (+32.0m higher ground)<br>Capacity: 3500 evacuees<br>Status: SECURE, VERIFIED HIGH GROUND");
+
+            // 4. Diverted High-Ground Safe Route (Bright Solid Green)
+            var safeRoute = L.polyline([[44.40478, 8.94439], [44.40978, 8.94839], [44.41378, 8.95139], [44.41678, 8.95439]], {
+                color: '#10b981',
+                weight: 6,
+                opacity: 0.95
+            }).addTo(map).bindPopup("<b style='color:#10b981;'>✅ ACTIVE DIVERTED HIGH-GROUND ESCAPE ROUTE</b><br>Continuous re-assessment verified safe. Bypasses all floodwaters along the western ridge.");
+
+        } else {
+            // Shelter A: ACTIVE & SAFE
+            var shelterAMarker = L.circleMarker([44.41678, 8.95439], {
+                color: '#10b981',
+                fillColor: '#059669',
+                fillOpacity: 0.95,
+                radius: 12,
+                weight: 3
+            }).addTo(map).bindPopup("<b style='color:#10b981;'>🟢 PRIMARY SAFE SHELTER</b><br><b>Province of Genoa North Municipal High School & Relief Camp</b><br>Elevation: 30.0m (+12.0m)<br>Status: ACTIVE & VERIFIED SAFE");
+
+            var safeRoute = L.polyline([[44.40478, 8.94439], [44.40978, 8.94839], [44.41378, 8.95139], [44.41678, 8.95439]], {
+                color: '#10b981',
+                weight: 5,
+                dashArray: '10, 10',
+                opacity: 0.9
+            }).addTo(map).bindPopup("<b>Designated Safe Evacuation Corridor</b><br>Priority: Green Line to Higher Elevation");
+
+            // Standby Shelter B
+            var shelterBMarker = L.circleMarker([44.42878, 8.92839], {
+                color: '#3b82f6',
+                fillColor: '#1d4ed8',
+                fillOpacity: 0.7,
+                radius: 9,
+                weight: 2
+            }).addTo(map).bindPopup("<b>🔵 SHELTER B: STANDBY HIGH-GROUND RESERVE</b><br><b>Province of Genoa Central Elevated Sports Stadium & Highland Ridge</b>");
+        }
+
+        // Shelter C: Apex Highland Citadel (Reserve)
+        var shelterCMarker = L.circleMarker([44.37278, 8.92239], {
+            color: '#6366f1',
+            fillColor: '#4338ca',
+            fillOpacity: 0.65,
+            radius: 8,
+            weight: 2
+        }).addTo(map).bindPopup("<b>🟣 SHELTER C: APEX CITADEL RESERVE</b><br><b>Province of Genoa South Highland Civil Defense Citadel</b><br>Elevation: 76.0m (+58.0m)");
+    </script>
+</body>
+</html>
